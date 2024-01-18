@@ -1,3 +1,4 @@
+import 'package:another_flutter_splash_screen/another_flutter_splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:randomizer/Themes.dart';
 
@@ -12,7 +13,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
-      theme: lightTheme,
+      theme: darkTheme,
       home: const MyHomePage(title: 'Flutter Demo Home Page'),
     );
   }
@@ -28,44 +29,38 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
+  final String _image = "images/DM_Randomizer_Logo.png";
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
-      body: Center(
+    return FlutterSplashScreen(
+      backgroundColor: Theme.of(context).colorScheme.background,
+      splashScreenBody: Center(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
+            Container(
+              margin: const EdgeInsets.only(top: 80),
+              child: Text(
+                "RANDOMIZER",
+                style: Theme.of(context).textTheme.displayLarge,
+              ),
+            ),
+            Container(
+              margin: const EdgeInsets.only(bottom: 160, top: 160),
+              child: Image(
+                image: AssetImage(_image),
+              ),
             ),
             Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
-            ),
-            TextFormField(
-              decoration: const InputDecoration(
-                labelText: "Introduzca un valor",
-              ),
+              "V.0.1.",
+              style: Theme.of(context).textTheme.displaySmall,
             ),
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ),
+      nextScreen: const MyHomePage(title: ""),
     );
   }
 }
