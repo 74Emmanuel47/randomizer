@@ -117,6 +117,7 @@ ThemeData lightTheme = ThemeData(
     //Text in a Message Box, Title in a Card
     headlineMedium: GoogleFonts.electrolize(
       fontSize: 14,
+      color: const Color(0xff0E77B1),
     ),
 
     //Subtitle in a card
@@ -135,6 +136,19 @@ ThemeData lightTheme = ThemeData(
     labelSmall: GoogleFonts.electrolize(
       fontSize: 10,
       color: Colors.black,
+    ),
+  ),
+
+  elevatedButtonTheme: const ElevatedButtonThemeData(
+    style: ButtonStyle(
+      shape: MaterialStatePropertyAll(
+        RoundedRectangleBorder(
+          borderRadius: BorderRadius.all(Radius.circular(8)),
+        ),
+      ),
+      backgroundColor: MaterialStatePropertyAll(
+        Color(0xffD2E4EE),
+      ),
     ),
   ),
 );

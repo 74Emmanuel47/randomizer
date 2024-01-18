@@ -22,8 +22,8 @@ class _MyAppState extends State<MyApp> {
   @override
   void initState() {
     _themeManager.addListener(themeListener);
-    getTheme();
     super.initState();
+    getTheme();
   }
 
   @override
@@ -56,6 +56,7 @@ class _MyAppState extends State<MyApp> {
       darkTheme: darkTheme,
       themeMode: _themeManager.themeMode,
       home: SplashScreen(theme: _themeManager.themeMode),
+      debugShowCheckedModeBanner: false,
     );
   }
 }

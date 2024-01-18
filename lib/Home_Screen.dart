@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:randomizer/Themes/theme_Manager.dart';
+import 'package:randomizer/templates/Molecules/List_Item.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key, required this.themeMode});
@@ -19,7 +19,10 @@ class _HomeScreen extends State<HomeScreen> {
     super.initState();
   }
 
-  Future setTheme(bool isDark) async {}
+  @override
+  void dispose() {
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -37,6 +40,18 @@ class _HomeScreen extends State<HomeScreen> {
                 : const Icon(Icons.dark_mode),
           ),
         ],
+      ),
+      body: ListView.builder(
+        physics: const BouncingScrollPhysics(
+          decelerationRate: ScrollDecelerationRate.normal,
+        ),
+        itemCount: 20,
+        itemBuilder: (context, index) {
+          return ListItem(
+            title: "$index.- Elemento $index",
+            subtitle: "$index",
+          );
+        },
       ),
     );
   }
