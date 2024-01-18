@@ -33,8 +33,8 @@ ThemeData lightTheme = ThemeData(
       color: const Color(0xffffffff),
     ),
     actionsIconTheme: const IconThemeData(
-      color: Color(0xffffffff),
-      size: 35,
+      color: Color.fromARGB(255, 255, 255, 255),
+      size: 25,
     ),
   ),
 
