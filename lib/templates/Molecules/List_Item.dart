@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:randomizer/New_List_Screen.dart';
 
 class ListItem extends StatefulWidget {
   const ListItem({super.key, required this.title, required this.subtitle});
@@ -40,13 +39,7 @@ class _ListItem extends State<ListItem> {
               ),
             ),
             IconButton(
-              onPressed: () {
-                Navigator.of(context).push(
-                  MaterialPageRoute(
-                    builder: (context) => const NewList(),
-                  ),
-                );
-              },
+              onPressed: () {},
               icon: const Icon(Icons.close),
             ),
           ],

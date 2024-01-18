@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:randomizer/New_List_Screen.dart';
 import 'package:randomizer/templates/Molecules/List_Item.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -52,6 +53,17 @@ class _HomeScreen extends State<HomeScreen> {
             subtitle: "$index",
           );
         },
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => const NewList(),
+            ),
+          );
+        },
+        child: const Icon(Icons.add),
       ),
     );
   }

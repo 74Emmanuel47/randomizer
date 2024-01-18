@@ -25,6 +25,8 @@ ThemeData lightTheme = ThemeData(
     onSurface: Color(0xff767676),
   ),
 
+  splashColor: const Color(0xff98bdd1),
+
   //App BarTheme
   appBarTheme: AppBarTheme(
     backgroundColor: const Color(0xff0E77B1),
@@ -34,6 +36,10 @@ ThemeData lightTheme = ThemeData(
     ),
     actionsIconTheme: const IconThemeData(
       color: Color.fromARGB(255, 255, 255, 255),
+      size: 25,
+    ),
+    iconTheme: const IconThemeData(
+      color: Colors.white,
       size: 25,
     ),
   ),
@@ -63,11 +69,9 @@ ThemeData lightTheme = ThemeData(
         top: Radius.circular(12),
       ),
     ),
-
     filled: true,
     fillColor: const Color(0xffd9d9d9),
     hoverColor: const Color.fromARGB(255, 185, 205, 214),
-
     focusedBorder: const UnderlineInputBorder(
       borderSide: BorderSide(
         color: Color(0xff0E77B1),
@@ -83,11 +87,15 @@ ThemeData lightTheme = ThemeData(
       fontSize: 14,
       color: const Color(0xff767676),
     ),
-
     hintStyle: GoogleFonts.electrolize(
       fontSize: 14,
       color: const Color(0xff767676),
     ),
+    contentPadding: const EdgeInsets.symmetric(
+      vertical: 10,
+      horizontal: 10,
+    ),
+    isDense: true,
   ),
 
   textTheme: TextTheme(

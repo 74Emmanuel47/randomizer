@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+import 'package:randomizer/templates/Molecules/InputGn.dart';
+import 'package:randomizer/templates/Molecules/List_Item.dart';
 
 class NewList extends StatefulWidget {
   const NewList({super.key});
@@ -9,6 +10,8 @@ class NewList extends StatefulWidget {
 }
 
 class _NewList extends State<NewList> {
+  bool focusTFF = false;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -17,16 +20,52 @@ class _NewList extends State<NewList> {
           "Nueva Lista",
           style: Theme.of(context).textTheme.displayMedium,
         ),
-        actions: [
-          IconButton(
-            onPressed: () {},
-            icon: const Icon(Icons.edit),
-          ),
-          IconButton(
-            onPressed: () {},
-            icon: const Icon(Icons.filter),
-          ),
-        ],
+      ),
+      body: Form(
+        child: Column(
+          children: [
+            const InputGn(hint: "Titulo"),
+            Container(
+              margin: const EdgeInsets.symmetric(
+                horizontal: 16,
+                vertical: 0.0,
+              ),
+              child: Divider(
+                color: Theme.of(context).colorScheme.onSecondary,
+                height: 2.0,
+              ),
+            ),
+            Container(
+              height: MediaQuery.of(context).size.height * 0.65,
+              margin: const EdgeInsets.symmetric(
+                horizontal: 0.0,
+                vertical: 16.0,
+              ),
+              child: ListView.builder(
+                itemCount: 10,
+                itemBuilder: (context, index) {
+                  return ListItem(
+                    title: "$index.- Elemento $index",
+                    subtitle: "Sci-Fi",
+                  );
+                },
+              ),
+            ),
+            Container(
+              margin: const EdgeInsets.symmetric(
+                horizontal: 24.0,
+                vertical: 24.0,
+              ),
+              child: SizedBox(
+                width: MediaQuery.of(context).size.width,
+                child: ElevatedButton(
+                  onPressed: () {},
+                  child: const Text("Guardar"),
+                ),
+              ),
+            )
+          ],
+        ),
       ),
     );
   }
