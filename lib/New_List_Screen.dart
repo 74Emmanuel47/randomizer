@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:randomizer/templates/Molecules/InputGn.dart';
+import 'package:randomizer/templates/Molecules/Input_Gn.dart';
+import 'package:randomizer/templates/Molecules/Input_Gn_T2.dart';
 import 'package:randomizer/templates/Molecules/List_Item.dart';
 
 class NewList extends StatefulWidget {
@@ -10,8 +11,6 @@ class NewList extends StatefulWidget {
 }
 
 class _NewList extends State<NewList> {
-  bool focusTFF = false;
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,7 +23,13 @@ class _NewList extends State<NewList> {
       body: Form(
         child: Column(
           children: [
-            const InputGn(hint: "Titulo"),
+            Container(
+              margin: const EdgeInsets.symmetric(
+                vertical: 24.0,
+                horizontal: 16.0,
+              ),
+              child: const InputGnT2(title: "Opción", hint: ""),
+            ),
             Container(
               margin: const EdgeInsets.symmetric(
                 horizontal: 16,

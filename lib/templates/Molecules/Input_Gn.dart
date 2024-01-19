@@ -20,19 +20,13 @@ class _InputGn extends State<InputGn> {
           focusTFF = value;
         });
       },
-      child: Container(
-        margin: const EdgeInsets.symmetric(
-          vertical: 24.0,
-          horizontal: 16.0,
-        ),
-        child: TextFormField(
-          decoration: InputDecoration(
-            hintText: widget.hint,
-            icon: Icon(
-              Icons.title,
-              size: 25,
-              color: focusTFF ? const Color(0xff0E77B1) : Colors.black,
-            ),
+      child: TextFormField(
+        decoration: InputDecoration(
+          hintText: widget.hint,
+          icon: Icon(
+            Icons.title,
+            size: 25,
+            color: focusTFF ? const Color(0xff0E77B1) : Colors.black,
           ),
         ),
       ),

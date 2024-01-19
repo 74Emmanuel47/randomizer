@@ -128,6 +128,11 @@ ThemeData lightTheme = ThemeData(
       color: const Color(0xff0E77B1),
     ),
 
+    titleMedium: GoogleFonts.electrolize(
+      fontSize: 16,
+      color: Colors.black,
+    ),
+
     //Subtitle in a card
     headlineSmall: GoogleFonts.electrolize(
       fontSize: 11,
