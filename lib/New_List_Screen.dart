@@ -28,7 +28,7 @@ class _NewList extends State<NewList> {
                 vertical: 24.0,
                 horizontal: 16.0,
               ),
-              child: const InputGnT2(title: "Opción", hint: ""),
+              child: const InputGn(hint: ""),
             ),
             Container(
               margin: const EdgeInsets.symmetric(
