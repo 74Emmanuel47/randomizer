@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:randomizer/Database/Models/Listas.dart';
+import 'package:randomizer/Database/RandomizerDB.dart';
 import 'package:randomizer/New_List_Screen.dart';
+import 'package:randomizer/templates/Molecules/Empty_List.dart';
 import 'package:randomizer/templates/Molecules/List_Item.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -14,10 +17,16 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreen extends State<HomeScreen> {
   late bool _isDark;
 
+  late List<Listas> lists;
+
   @override
   void initState() {
     _isDark = widget.themeMode == ThemeMode.dark;
     super.initState();
+  }
+
+  getListas() async {
+    lists = await RandomizerDB.readListas();
   }
 
   @override
@@ -27,6 +36,7 @@ class _HomeScreen extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
+    getListas();
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -42,18 +52,20 @@ class _HomeScreen extends State<HomeScreen> {
           ),
         ],
       ),
-      body: ListView.builder(
-        physics: const BouncingScrollPhysics(
-          decelerationRate: ScrollDecelerationRate.normal,
-        ),
-        itemCount: 20,
-        itemBuilder: (context, index) {
-          return ListItem(
-            title: "$index.- Elemento $index",
-            subtitle: "$index",
-          );
-        },
-      ),
+      body: lists.isEmpty
+          ? const EmptyList()
+          : ListView.builder(
+              physics: const BouncingScrollPhysics(
+                decelerationRate: ScrollDecelerationRate.normal,
+              ),
+              itemCount: 20,
+              itemBuilder: (context, index) {
+                return ListItem(
+                  title: "$index.- Elemento $index",
+                  subtitle: "$index",
+                );
+              },
+            ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           Navigator.push(

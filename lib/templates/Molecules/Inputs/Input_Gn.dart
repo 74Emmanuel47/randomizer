@@ -23,6 +23,12 @@ class _InputGn extends State<InputGn> {
           });
         },
         child: TextFormField(
+          validator: (value) {
+            if (value == null || value.isEmpty) {
+              return "Por favor, coloca un nombre a tu lista.";
+            }
+            return null;
+          },
           decoration: InputDecoration(
             hintText: widget.hint,
             icon: Icon(

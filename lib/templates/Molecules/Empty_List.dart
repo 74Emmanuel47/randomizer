@@ -5,11 +5,15 @@ class EmptyList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Center(
+    return Center(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Icon(Icons.format_list_bulleted),
+          Icon(
+            Icons.format_list_bulleted,
+            size: 75,
+            color: Theme.of(context).colorScheme.onBackground,
+          ),
         ],
       ),
     );

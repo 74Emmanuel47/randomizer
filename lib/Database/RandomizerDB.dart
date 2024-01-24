@@ -1,6 +1,6 @@
 import 'package:path/path.dart';
-import 'package:randomizer/Models/Items.dart';
-import 'package:randomizer/Models/Listas.dart';
+import 'package:randomizer/Database/Models/Items.dart';
+import 'package:randomizer/Database/Models/Listas.dart';
 import 'package:sqflite/sqflite.dart';
 
 class RandomizerDB {
