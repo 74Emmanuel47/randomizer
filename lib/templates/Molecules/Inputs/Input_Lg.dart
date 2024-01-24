@@ -12,11 +12,19 @@ class InputLg extends StatefulWidget {
 class _InputLg extends State<InputLg> {
   @override
   Widget build(BuildContext context) {
-    return TextFormField(
-      decoration: InputDecoration(
-        hintText: widget.hint,
+    return Container(
+      margin: const EdgeInsets.symmetric(
+        vertical: 0.0,
+        horizontal: 16.0,
       ),
-      maxLines: 1,
+      child: Focus(
+        child: TextFormField(
+          decoration: InputDecoration(
+            hintText: widget.hint,
+          ),
+          maxLines: 1,
+        ),
+      ),
     );
   }
 }

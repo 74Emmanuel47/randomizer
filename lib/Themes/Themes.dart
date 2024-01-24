@@ -120,6 +120,7 @@ ThemeData lightTheme = ThemeData(
     //Message Box Title
     headlineLarge: GoogleFonts.electrolize(
       fontSize: 24,
+      color: Colors.black,
     ),
 
     //Text in a Message Box, Title in a Card

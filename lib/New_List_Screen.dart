@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:randomizer/templates/Molecules/Buttons/Button_Dashed.dart';
 import 'package:randomizer/templates/Molecules/Divisor.dart';
-import 'package:randomizer/templates/Molecules/Floating_Button.dart';
-import 'package:randomizer/templates/Molecules/Input_Gn.dart';
-import 'package:randomizer/templates/Molecules/Input_Lg.dart';
+import 'package:randomizer/templates/Molecules/Buttons/Floating_Button.dart';
+import 'package:randomizer/templates/Molecules/Inputs/Input_Gn.dart';
+import 'package:randomizer/templates/Molecules/Inputs/Input_Lg.dart';
 import 'package:randomizer/templates/Molecules/List_Item.dart';
 
 class NewList extends StatefulWidget {
@@ -25,21 +26,22 @@ class _NewList extends State<NewList> {
       body: Form(
         child: Column(
           children: [
-            Container(
-              margin: const EdgeInsets.fromLTRB(16.0, 24.0, 16.0, 0.0),
-              child: const InputGn(hint: "Título"),
+            const InputGn(hint: "Título"),
+            const Divisor(),
+            const InputLg(
+              hint: "Agrega una breve descripción...",
             ),
             const Divisor(),
-            Container(
-              margin: const EdgeInsets.symmetric(
-                vertical: 0.0,
-                horizontal: 16.0,
-              ),
-              child: const InputLg(
-                hint: "Agrega una breve descripción...",
+            const DashedButton(txt: "Agregar Elemento"),
+            Expanded(
+              child: ListView.builder(
+                shrinkWrap: true,
+                itemCount: 10,
+                itemBuilder: (context, index) {
+                  return ListItem(title: "Título $index", subtitle: "Sci-Fi");
+                },
               ),
             ),
-            const Divisor(),
           ],
         ),
       ),
@@ -50,7 +52,7 @@ class _NewList extends State<NewList> {
         ),
         child: const FloatingButton(txt: "Hecho"),
       ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
     );
   }
 }
