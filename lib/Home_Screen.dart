@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:randomizer/List_Screen.dart';
 import 'package:randomizer/New_List_Screen.dart';
 import 'package:randomizer/templates/Molecules/List_Item.dart';
 
@@ -60,9 +59,7 @@ class _HomeScreen extends State<HomeScreen> {
           Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => const ListScreen(
-                title: "Películas",
-              ),
+              builder: (context) => const NewList(),
             ),
           );
         },
