@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+import 'package:randomizer/Database/Models/Listas.dart';
 import 'package:randomizer/templates/Molecules/Inputs/Input_Gn_T2.dart';
 
 class MsgBoxNewItem extends StatefulWidget {
@@ -10,6 +10,14 @@ class MsgBoxNewItem extends StatefulWidget {
 }
 
 class _MsgBoxNewItem extends State<MsgBoxNewItem> {
+  TextEditingController option = TextEditingController();
+  TextEditingController description = TextEditingController(text: "");
+
+  @override
+  void initState() {
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
@@ -27,8 +35,16 @@ class _MsgBoxNewItem extends State<MsgBoxNewItem> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const InputGnT2(title: "Opción", hint: ""),
-              const InputGnT2(title: "Etiqueta", hint: ""),
+              InputGnT2(
+                title: "Opción",
+                hint: "",
+                value: option,
+              ),
+              InputGnT2(
+                title: "Etiqueta",
+                hint: "",
+                value: description,
+              ),
               Text(
                 "Nota: no es necesario agregar una descripción.",
                 style: Theme.of(context).textTheme.labelSmall,
@@ -51,7 +67,7 @@ class _MsgBoxNewItem extends State<MsgBoxNewItem> {
           ),
         ),
         TextButton(
-          onPressed: () {},
+          onPressed: option.text != "" ? _back() : null,
           child: Text(
             "Aceptar",
             style: TextStyle(
@@ -61,6 +77,13 @@ class _MsgBoxNewItem extends State<MsgBoxNewItem> {
           ),
         ),
       ],
+    );
+  }
+
+  _back() {
+    Navigator.pop(
+      context,
+      Listas(title: option.text, description: description.text),
     );
   }
 }

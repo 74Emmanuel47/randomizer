@@ -3,6 +3,8 @@ import 'package:randomizer/Database/Models/Items.dart';
 import 'package:randomizer/Database/Models/Listas.dart';
 import 'package:sqflite/sqflite.dart';
 
+List<Listas> allListas = [];
+
 class RandomizerDB {
   static Future<Database> _openDB() async {
     return openDatabase(
@@ -43,13 +45,15 @@ class RandomizerDB {
 
     final List<Map<String, dynamic>> listasMap = await database.query("listas");
 
-    return List.generate(
+    allListas = List.generate(
       listasMap.length,
       (index) => Listas(
         id: listasMap[index]['id'],
         title: listasMap[index]['title'],
       ),
     );
+
+    return allListas;
   }
 
   //Methods to create, read, update and delete items

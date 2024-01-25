@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:randomizer/templates/Msg_Box_New_Item.dart';
 
 class ListItem extends StatefulWidget {
   const ListItem({super.key, required this.title, required this.subtitle});

@@ -1,10 +1,16 @@
 import 'package:flutter/material.dart';
 
 class InputGnT2 extends StatefulWidget {
-  const InputGnT2({super.key, required this.title, required this.hint});
+  const InputGnT2({
+    super.key,
+    required this.title,
+    required this.hint,
+    required this.value,
+  });
 
   final String title;
   final String hint;
+  final TextEditingController value;
 
   @override
   State<InputGnT2> createState() => _InputGnT2();
@@ -28,6 +34,7 @@ class _InputGnT2 extends State<InputGnT2> {
               style: Theme.of(context).textTheme.titleMedium,
             ),
             TextFormField(
+              controller: widget.value,
               decoration: InputDecoration(
                 hintText: widget.hint,
               ),

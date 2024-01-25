@@ -26,7 +26,7 @@ class _HomeScreen extends State<HomeScreen> {
   }
 
   getListas() async {
-    lists = await RandomizerDB.readListas();
+    await RandomizerDB.readListas();
   }
 
   @override
@@ -52,28 +52,29 @@ class _HomeScreen extends State<HomeScreen> {
           ),
         ],
       ),
-      body: lists.isEmpty
+      body: allListas.isEmpty
           ? const EmptyList()
           : ListView.builder(
               physics: const BouncingScrollPhysics(
                 decelerationRate: ScrollDecelerationRate.normal,
               ),
-              itemCount: 20,
+              itemCount: allListas.length,
               itemBuilder: (context, index) {
                 return ListItem(
-                  title: "$index.- Elemento $index",
-                  subtitle: "$index",
+                  title: allListas[index].title,
+                  subtitle: allListas[index].description.toString(),
                 );
               },
             ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => const NewList(),
-            ),
+        onPressed: () async {
+          int result = await RandomizerDB.insertLista(
+            const Listas(
+                title: "Películas",
+                description: "Una lista de películas que quiero ver."),
           );
+
+          print(result);
         },
         child: const Icon(Icons.add),
       ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:randomizer/Database/Models/Listas.dart';
 import 'package:randomizer/templates/Molecules/Buttons/Button_Dashed.dart';
 import 'package:randomizer/templates/Molecules/Divisor.dart';
 import 'package:randomizer/templates/Molecules/Buttons/Floating_Button.dart';
@@ -14,6 +15,19 @@ class NewList extends StatefulWidget {
 }
 
 class _NewList extends State<NewList> {
+  late List<Listas> items;
+
+  @override
+  void initState() {
+    items = [];
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -36,9 +50,12 @@ class _NewList extends State<NewList> {
             Expanded(
               child: ListView.builder(
                 shrinkWrap: true,
-                itemCount: 10,
+                itemCount: items.length,
                 itemBuilder: (context, index) {
-                  return ListItem(title: "Título $index", subtitle: "Sci-Fi");
+                  return ListItem(
+                    title: items[index].title,
+                    subtitle: items[index].description.toString(),
+                  );
                 },
               ),
             ),
