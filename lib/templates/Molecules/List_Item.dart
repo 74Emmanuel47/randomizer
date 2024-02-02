@@ -1,22 +1,27 @@
 import 'package:flutter/material.dart';
 
-class ListItem extends StatefulWidget {
-  const ListItem({super.key, required this.title, required this.subtitle});
+class ListItem extends StatelessWidget {
+  const ListItem({
+    super.key,
+    required this.id,
+    required this.title,
+    this.subtitle,
+    required this.onPressed,
+    required this.onPressedDelete,
+  });
 
+  final int id;
   final String title;
-  final String subtitle;
+  final String? subtitle;
+  final Function()? onPressed;
+  final Function(int id) onPressedDelete;
 
-  @override
-  State<ListItem> createState() => _ListItem();
-}
-
-class _ListItem extends State<ListItem> {
   @override
   Widget build(BuildContext context) {
     return Container(
       margin: const EdgeInsets.symmetric(vertical: 4.0, horizontal: 24.0),
       child: ElevatedButton(
-        onPressed: () {},
+        onPressed: onPressed,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
@@ -26,12 +31,12 @@ class _ListItem extends State<ListItem> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    widget.title,
+                    title,
                     overflow: TextOverflow.ellipsis,
                     style: Theme.of(context).textTheme.headlineMedium,
                   ),
                   Text(
-                    widget.subtitle,
+                    subtitle!,
                     style: Theme.of(context).textTheme.headlineSmall,
                     overflow: TextOverflow.ellipsis,
                   ),
@@ -39,7 +44,7 @@ class _ListItem extends State<ListItem> {
               ),
             ),
             IconButton(
-              onPressed: () {},
+              onPressed: () => onPressedDelete(id),
               icon: const Icon(Icons.close),
             ),
           ],

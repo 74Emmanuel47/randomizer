@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:randomizer/Splash_Screen.dart';
 import 'package:randomizer/Themes/Themes.dart';
 import 'package:randomizer/Themes/theme_Manager.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+
+import 'Screens/Splash_Screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -54,7 +55,7 @@ class _MyAppState extends State<MyApp> {
       title: 'Randomizer',
       theme: lightTheme,
       darkTheme: darkTheme,
-      themeMode: _themeManager.themeMode,
+      themeMode: ThemeMode.system,
       home: SplashScreen(theme: _themeManager.themeMode),
       debugShowCheckedModeBanner: false,
     );

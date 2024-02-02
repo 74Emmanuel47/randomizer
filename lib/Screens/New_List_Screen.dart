@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:randomizer/Database/Models/Listas.dart';
-import 'package:randomizer/templates/Molecules/Buttons/Button_Dashed.dart';
-import 'package:randomizer/templates/Molecules/Divisor.dart';
-import 'package:randomizer/templates/Molecules/Buttons/Floating_Button.dart';
+import 'package:randomizer/Templates/Molecules/Divisor.dart';
+import 'package:randomizer/Templates/Molecules/List_Item.dart';
 import 'package:randomizer/templates/Molecules/Inputs/Input_Gn.dart';
 import 'package:randomizer/templates/Molecules/Inputs/Input_Lg.dart';
-import 'package:randomizer/templates/Molecules/List_Item.dart';
 
 class NewList extends StatefulWidget {
   const NewList({super.key});
@@ -16,6 +14,8 @@ class NewList extends StatefulWidget {
 
 class _NewList extends State<NewList> {
   late List<Listas> items;
+  final titleController = TextEditingController();
+  final descriptionController = TextEditingController();
 
   @override
   void initState() {
@@ -26,6 +26,15 @@ class _NewList extends State<NewList> {
   @override
   void dispose() {
     super.dispose();
+  }
+
+  //Add new item
+  void addItem() async {}
+
+  void deleteItem(int id) {
+    setState(() {
+      items.removeAt(id);
+    });
   }
 
   @override
@@ -40,21 +49,27 @@ class _NewList extends State<NewList> {
       body: Form(
         child: Column(
           children: [
-            const InputGn(hint: "Título"),
-            const Divisor(),
-            const InputLg(
-              hint: "Agrega una breve descripción...",
+            InputGn(
+              hint: "Título",
+              controller: titleController,
             ),
             const Divisor(),
-            const DashedButton(txt: "Agregar Elemento"),
+            InputLg(
+              hint: "Agrega una breve descripción...",
+              controller: descriptionController,
+            ),
+            const Divisor(),
             Expanded(
               child: ListView.builder(
                 shrinkWrap: true,
                 itemCount: items.length,
                 itemBuilder: (context, index) {
                   return ListItem(
+                    id: index,
                     title: items[index].title,
                     subtitle: items[index].description.toString(),
+                    onPressed: null,
+                    onPressedDelete: deleteItem,
                   );
                 },
               ),
@@ -62,14 +77,6 @@ class _NewList extends State<NewList> {
           ],
         ),
       ),
-      floatingActionButton: Container(
-        margin: const EdgeInsets.symmetric(
-          horizontal: 24.0,
-          vertical: 24.0,
-        ),
-        child: const FloatingButton(txt: "Hecho"),
-      ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
     );
   }
 }

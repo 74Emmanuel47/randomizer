@@ -1,7 +1,8 @@
 import 'package:another_flutter_splash_screen/another_flutter_splash_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:randomizer/Home_Screen.dart';
 import 'package:randomizer/Themes/theme_Manager.dart';
+
+import 'Home_Screen.dart';
 
 ThemeManager _themeManager = ThemeManager();
 
@@ -48,7 +49,7 @@ class _SplashScreen extends State<SplashScreen> {
           ],
         ),
       ),
-      nextScreen: HomeScreen(themeMode: widget.theme),
+      nextScreen: const HomeScreen(),
       backgroundColor: Theme.of(context).colorScheme.background,
     );
   }

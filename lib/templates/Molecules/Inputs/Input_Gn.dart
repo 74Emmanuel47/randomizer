@@ -1,8 +1,16 @@
+// ignore_for_file: file_names
+
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class InputGn extends StatefulWidget {
-  const InputGn({super.key, required this.hint});
+  const InputGn({
+    super.key,
+    required this.hint,
+    required this.controller,
+  });
 
+  final TextEditingController controller;
   final String hint;
 
   @override
@@ -22,13 +30,8 @@ class _InputGn extends State<InputGn> {
             focusTFF = value;
           });
         },
-        child: TextFormField(
-          validator: (value) {
-            if (value == null || value.isEmpty) {
-              return "Por favor, coloca un nombre a tu lista.";
-            }
-            return null;
-          },
+        child: TextField(
+          controller: widget.controller,
           decoration: InputDecoration(
             hintText: widget.hint,
             icon: Icon(
@@ -37,9 +40,11 @@ class _InputGn extends State<InputGn> {
               color: focusTFF ? const Color(0xff0E77B1) : Colors.black,
             ),
           ),
+          style: GoogleFonts.electrolize(
+            color: focusTFF ? const Color(0xff0E77B1) : Colors.black,
+          ),
         ),
       ),
     );
-    ;
   }
 }

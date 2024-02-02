@@ -6,7 +6,7 @@ class Listas {
   const Listas({
     this.id,
     required this.title,
-    this.description,
+    this.description = "HOLA",
   });
 
   Map<String, dynamic> toMap() {

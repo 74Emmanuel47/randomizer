@@ -11,7 +11,7 @@ class RandomizerDB {
       join(await getDatabasesPath(), 'randomizer.db'),
       onCreate: (db, version) async {
         await db.execute(
-            "CREATE TABLE listas (id INTEGER PRIMARY KEY AUTOINCREMENT, title TEXT, description TEXT NULL);");
+            "CREATE TABLE listas (id INTEGER PRIMARY KEY AUTOINCREMENT, title TEXT, description TEXT NULL)");
         await db.execute(
             "CREATE TABLE items (id INTEGER PRIMARY KEY, listID INTEGER, title TEXT, description TEXT NULL, FOREIGN KEY (listID) REFERENCES listas(id) ON DELETE CASCADE ON UPDATE CASCADE );");
       },
@@ -28,10 +28,10 @@ class RandomizerDB {
     return database.insert("listas", lista.toMap());
   }
 
-  static Future<int> deleteLista(Listas lista) async {
+  static Future<int> deleteLista(int id) async {
     Database database = await _openDB();
 
-    return database.delete("listas", where: "id = ?", whereArgs: [lista.id]);
+    return database.delete("listas", where: "id = ?", whereArgs: [id]);
   }
 
   static Future<int> updateLista(Listas lista) async {
