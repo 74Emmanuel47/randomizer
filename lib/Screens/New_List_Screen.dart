@@ -1,8 +1,13 @@
+// ignore_for_file: file_names, use_build_context_synchronously
+
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:randomizer/Database/Models/Items.dart';
 import 'package:randomizer/Database/Models/Listas.dart';
+import 'package:randomizer/Database/RandomizerDB.dart';
 import 'package:randomizer/Templates/Molecules/Divisor.dart';
 import 'package:randomizer/Templates/Molecules/List_Item.dart';
+import 'package:randomizer/templates/Molecules/Button.dart';
 import 'package:randomizer/templates/Molecules/Inputs/Input_Gn.dart';
 import 'package:randomizer/templates/Molecules/Inputs/Input_Gn_T2.dart';
 import 'package:randomizer/templates/Molecules/Inputs/Input_Lg.dart';
@@ -20,16 +25,26 @@ class _NewList extends State<NewList> {
   final descriptionController = TextEditingController();
   final opcionController = TextEditingController();
   final desOpcionController = TextEditingController();
+  bool enabledButton = false;
 
   @override
   void initState() {
     items = [];
+    titleController.addListener(onTitleChange);
     super.initState();
   }
 
   @override
   void dispose() {
     super.dispose();
+  }
+
+  void onTitleChange() {
+    if (mounted) {
+      setState(() {
+        enabledButton = !enabledButton;
+      });
+    }
   }
 
   //Add new item
@@ -180,6 +195,34 @@ class _NewList extends State<NewList> {
     });
   }
 
+  void saveList() async {
+    try {
+      int id = await RandomizerDB.insertLista(
+        Listas(
+          title: titleController.text,
+          description: descriptionController.text,
+        ),
+      );
+
+      if (items.isNotEmpty) {
+        for (var item in items) {
+          await RandomizerDB.insertItem(
+            Items(
+              id: id,
+              listID: id,
+              title: item.title,
+              description: item.description,
+            ),
+          );
+        }
+      }
+    } catch (e) {
+      print(e);
+    }
+
+    Navigator.pop(context);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -202,11 +245,11 @@ class _NewList extends State<NewList> {
               controller: descriptionController,
             ),
             const Divisor(),
-            ElevatedButton(
-              onPressed: addItem,
-              child: const Text("Agregar"),
+            ButtonDashed(
+              onTap: addItem,
+              hint: "Agregar Elemento",
+              enabled: true,
             ),
-            const Divisor(),
             Expanded(
               child: ListView.builder(
                 shrinkWrap: true,
@@ -221,6 +264,14 @@ class _NewList extends State<NewList> {
                   );
                 },
               ),
+            ),
+            ButtonDashed(
+              enabled: titleController.text.isNotEmpty ? true : false,
+              onTap: saveList,
+              hint: "Hecho",
+            ),
+            const SizedBox(
+              height: 10,
             ),
           ],
         ),

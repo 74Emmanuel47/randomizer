@@ -1,3 +1,5 @@
+// ignore_for_file: file_names
+
 import 'package:path/path.dart';
 import 'package:randomizer/Database/Models/Items.dart';
 import 'package:randomizer/Database/Models/Listas.dart';

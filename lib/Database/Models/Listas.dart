@@ -1,3 +1,5 @@
+// ignore_for_file: file_names
+
 class Listas {
   final int? id;
   final String title;
@@ -6,13 +8,13 @@ class Listas {
   const Listas({
     this.id,
     required this.title,
-    this.description = "HOLA",
+    this.description,
   });
 
   Map<String, dynamic> toMap() {
     return {
       'title': title,
-      'description': description,
+      'description': description ?? "",
     };
   }
 }

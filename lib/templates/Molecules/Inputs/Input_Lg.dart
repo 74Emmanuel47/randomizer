@@ -1,3 +1,5 @@
+// ignore_for_file: file_names
+
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -5,7 +7,7 @@ class InputLg extends StatefulWidget {
   const InputLg({super.key, required this.hint, required this.controller});
 
   final String hint;
-  final controller;
+  final TextEditingController controller;
 
   @override
   State<InputLg> createState() => _InputLg();

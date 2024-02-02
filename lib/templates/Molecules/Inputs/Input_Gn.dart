@@ -3,8 +3,9 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+// ignore: must_be_immutable
 class InputGn extends StatefulWidget {
-  const InputGn({
+  InputGn({
     super.key,
     required this.hint,
     required this.controller,
