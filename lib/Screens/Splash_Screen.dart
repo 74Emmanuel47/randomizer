@@ -25,28 +25,30 @@ class _SplashScreen extends State<SplashScreen> {
     return FlutterSplashScreen(
       useImmersiveMode: true,
       splashScreenBody: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: <Widget>[
-            Container(
-              margin: const EdgeInsets.only(top: 80),
-              child: Text(
-                "RANDOMIZER",
-                style: Theme.of(context).textTheme.displayLarge,
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: <Widget>[
+              Container(
+                margin: const EdgeInsets.only(top: 80),
+                child: Text(
+                  "RANDOMIZER",
+                  style: Theme.of(context).textTheme.displayLarge,
+                ),
               ),
-            ),
-            Container(
-              margin: const EdgeInsets.only(bottom: 160, top: 160),
-              child: Image(
-                image: AssetImage(_image),
+              Container(
+                margin: const EdgeInsets.only(bottom: 160, top: 160),
+                child: Image(
+                  image: AssetImage(_image),
+                ),
               ),
-            ),
-            Text(
-              "V.0.1.",
-              style: Theme.of(context).textTheme.displaySmall,
-            ),
-          ],
+              Text(
+                "V.0.1.",
+                style: Theme.of(context).textTheme.displaySmall,
+              ),
+            ],
+          ),
         ),
       ),
       nextScreen: const HomeScreen(),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class InputGnT2 extends StatefulWidget {
   const InputGnT2({
@@ -17,6 +18,8 @@ class InputGnT2 extends StatefulWidget {
 }
 
 class _InputGnT2 extends State<InputGnT2> {
+  bool focusTFF = false;
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -25,7 +28,11 @@ class _InputGnT2 extends State<InputGnT2> {
         horizontal: 2.0,
       ),
       child: Focus(
-        onFocusChange: (value) {},
+        onFocusChange: (value) {
+          setState(() {
+            focusTFF = value;
+          });
+        },
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -37,6 +44,9 @@ class _InputGnT2 extends State<InputGnT2> {
               controller: widget.value,
               decoration: InputDecoration(
                 hintText: widget.hint,
+              ),
+              style: GoogleFonts.electrolize(
+                color: focusTFF ? const Color(0xff0E77B1) : Colors.black,
               ),
             ),
           ],
