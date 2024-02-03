@@ -59,6 +59,19 @@ class RandomizerDB {
     return allListas;
   }
 
+  static Future<Listas> readOneList(int id) async {
+    Database database = await _openDB();
+
+    final List<Map<String, dynamic>> listMap =
+        await database.query("listas", where: "id = ?", whereArgs: [id]);
+
+    return Listas(
+      id: listMap[0]['id'],
+      title: listMap[0]['title'],
+      description: listMap[0]['description'],
+    );
+  }
+
   //Methods to create, read, update and delete items
   static Future<int> insertItem(Items item) async {
     Database database = await _openDB();
@@ -71,7 +84,7 @@ class RandomizerDB {
 
     final List<Map<String, dynamic>> itemsMap = await database.query(
       "items",
-      where: "id = ?",
+      where: "listID = ?",
       whereArgs: [listID],
     );
 
@@ -92,9 +105,9 @@ class RandomizerDB {
     return database.update("items", item.toMap());
   }
 
-  static Future<int> deleteItem(Items item) async {
+  static Future<int> deleteItem(int id) async {
     Database database = await _openDB();
 
-    return database.delete("items", where: "id = ?", whereArgs: [item.id]);
+    return database.delete("items", where: "id = ?", whereArgs: [id]);
   }
 }

@@ -36,6 +36,10 @@ class _NewList extends State<NewList> {
 
   @override
   void dispose() {
+    descriptionController.clear();
+    opcionController.clear();
+    desOpcionController.dispose();
+    titleController.dispose();
     super.dispose();
   }
 
@@ -205,7 +209,7 @@ class _NewList extends State<NewList> {
 
       if (items.isNotEmpty) {
         for (var item in items) {
-          await RandomizerDB.insertItem(
+          int itemID = await RandomizerDB.insertItem(
             Items(
               id: id,
               listID: id,
@@ -213,6 +217,7 @@ class _NewList extends State<NewList> {
               description: item.description,
             ),
           );
+          print(itemID);
         }
       }
     } catch (e) {

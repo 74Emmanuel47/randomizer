@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:randomizer/Database/Models/Listas.dart';
 import 'package:randomizer/Database/RandomizerDB.dart';
+import 'package:randomizer/Screens/List_Screen.dart';
 import 'package:randomizer/Screens/New_List_Screen.dart';
 import 'package:randomizer/Templates/Molecules/Empty_List.dart';
 import 'package:randomizer/Templates/Molecules/List_Item.dart';
@@ -37,6 +38,15 @@ class _HomeScreenState extends State<HomeScreen> {
     setListas();
   }
 
+  void changeScreen(int id) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => ListScreen(listId: id),
+      ),
+    );
+  }
+
   @override
   void dispose() {
     super.dispose();
@@ -63,7 +73,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   id: lists[index].id!,
                   title: lists[index].title,
                   subtitle: lists[index].description,
-                  onPressed: null,
+                  onPressed: () => changeScreen(lists[index].id!),
                   onPressedDelete: deleteList,
                 );
               },
