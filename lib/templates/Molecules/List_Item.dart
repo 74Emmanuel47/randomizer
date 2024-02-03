@@ -23,6 +23,9 @@ class ListItem extends StatelessWidget {
     return Container(
       margin: const EdgeInsets.symmetric(vertical: 4.0, horizontal: 24.0),
       child: ElevatedButton(
+        style: ElevatedButton.styleFrom(
+          backgroundColor: Theme.of(context).colorScheme.secondary,
+        ),
         onPressed: onPressed,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -47,7 +50,10 @@ class ListItem extends StatelessWidget {
             ),
             IconButton(
               onPressed: () => onPressedDelete(id),
-              icon: const Icon(Icons.close),
+              icon: Icon(
+                Icons.close,
+                color: Theme.of(context).colorScheme.primary,
+              ),
             ),
           ],
         ),

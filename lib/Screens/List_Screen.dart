@@ -4,6 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:randomizer/Database/Models/Items.dart';
 import 'package:randomizer/Database/Models/Listas.dart';
 import 'package:randomizer/Database/RandomizerDB.dart';
+import 'package:randomizer/templates/Molecules/Divisor.dart';
 import 'package:randomizer/templates/Molecules/Empty_List.dart';
 import 'package:randomizer/templates/Molecules/Inputs/Input_Gn_T2.dart';
 import 'package:randomizer/templates/Molecules/List_Item.dart';
@@ -125,18 +126,39 @@ class _ListScreenState extends State<ListScreen> {
         title: Text(list.title),
       ),
       body: items.isEmpty
-          ? EmptyList()
-          : ListView.builder(
-              itemCount: items.length,
-              itemBuilder: (context, index) {
-                return ListItem(
-                  id: items[index].id!,
-                  title: items[index].title,
-                  subtitle: items[index].description,
-                  onPressed: () => updateItems(items[index].listID, index),
-                  onPressedDelete: onPressedDelete,
-                );
-              },
+          ? const EmptyList()
+          : Column(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(top: 24.0),
+                  child: Text(
+                    list.description!.isEmpty
+                        ? "Que la suerte este siempre de tu lado..."
+                        : list.description!,
+                    style: TextStyle(
+                      fontSize:
+                          Theme.of(context).textTheme.headlineLarge!.fontSize,
+                      fontFamily:
+                          Theme.of(context).textTheme.headlineLarge!.fontFamily,
+                      color: Theme.of(context).colorScheme.onPrimary,
+                    ),
+                  ),
+                ),
+                const Divisor(),
+                ListView.builder(
+                  shrinkWrap: true,
+                  itemCount: items.length,
+                  itemBuilder: (context, index) {
+                    return ListItem(
+                      id: items[index].id!,
+                      title: items[index].title,
+                      subtitle: items[index].description,
+                      onPressed: () => updateItems(items[index].listID, index),
+                      onPressedDelete: onPressedDelete,
+                    );
+                  },
+                )
+              ],
             ),
     );
   }

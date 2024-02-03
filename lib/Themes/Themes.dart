@@ -205,6 +205,10 @@ ThemeData darkTheme = ThemeData(
       color: Color(0xffffffff),
       size: 35,
     ),
+    iconTheme: const IconThemeData(
+      color: Color(0xffffffff),
+      size: 25,
+    ),
   ),
 
   //Floating Action Button
@@ -285,13 +289,13 @@ ThemeData darkTheme = ThemeData(
 
     //Text in a Message Box, Title in a Card
     headlineMedium: GoogleFonts.electrolize(
-      fontSize: 14,
+      fontSize: 18,
       color: Colors.white,
     ),
 
     //Subtitle in a card
     headlineSmall: GoogleFonts.electrolize(
-      fontSize: 11,
+      fontSize: 14,
       color: Colors.white,
     ),
 

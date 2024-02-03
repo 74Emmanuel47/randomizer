@@ -14,7 +14,7 @@ class Listas {
   Map<String, dynamic> toMap() {
     return {
       'title': title,
-      'description': description ?? "Hola",
+      'description': description ?? "Que la suerte esté siempre de tu lado...",
     };
   }
 }
