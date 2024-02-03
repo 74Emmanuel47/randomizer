@@ -192,10 +192,48 @@ class _NewList extends State<NewList> {
     });
   }
 
-  void deleteItem(int id) {
-    setState(() {
-      items.removeAt(id);
-    });
+  void deleteItem(int id) async {
+    await showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: Text(
+          "Alerta",
+          textAlign: TextAlign.center,
+          style: TextStyle(
+            color: Theme.of(context).colorScheme.error,
+            fontSize: Theme.of(context).textTheme.headlineLarge!.fontSize,
+            fontFamily: Theme.of(context).textTheme.headlineLarge!.fontFamily,
+          ),
+        ),
+        content: Text(
+            "Está a punto de borrar la opción ${items[id].title} de la lista. "
+            "¿Está seguro de eliminar la opción?"),
+        actions: [
+          //Cancelar
+          TextButton(
+            onPressed: () async {
+              Navigator.pop(context);
+            },
+            child: const Text("Cancelar"),
+          ),
+          //Cancelar
+          TextButton(
+            onPressed: () async {
+              Navigator.pop(context);
+              setState(() {
+                items.removeAt(id);
+              });
+            },
+            child: Text(
+              "Borrar",
+              style: TextStyle(
+                color: Theme.of(context).colorScheme.error,
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
   }
 
   void saveList() async {
@@ -219,7 +257,9 @@ class _NewList extends State<NewList> {
           );
         }
       }
-    } catch (e) {}
+    } catch (e) {
+      print(e);
+    }
 
     Navigator.pop(context);
   }
