@@ -12,7 +12,7 @@ ThemeData lightTheme = ThemeData(
     primary: Color(0xff0E77B1),
     onPrimary: Colors.white,
 
-    secondary: Color(0xffD2E4EE),
+    secondary: Color.fromARGB(255, 157, 208, 235),
     onSecondary: Color(0xff0E77B1),
 
     error: Color(0xffFF8484),
@@ -127,7 +127,7 @@ ThemeData lightTheme = ThemeData(
 
     //Text in a Message Box, Title in a Card
     headlineMedium: GoogleFonts.electrolize(
-      fontSize: 14,
+      fontSize: 18,
       color: const Color(0xff0E77B1),
     ),
 
@@ -138,7 +138,7 @@ ThemeData lightTheme = ThemeData(
 
     //Subtitle in a card
     headlineSmall: GoogleFonts.electrolize(
-      fontSize: 11,
+      fontSize: 14,
       color: const Color(0xff0E77B1),
     ),
 

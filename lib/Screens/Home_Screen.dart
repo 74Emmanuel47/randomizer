@@ -62,7 +62,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 return ListItem(
                   id: lists[index].id!,
                   title: lists[index].title,
-                  subtitle: lists[index].description ?? "",
+                  subtitle: lists[index].description,
                   onPressed: null,
                   onPressedDelete: deleteList,
                 );

@@ -75,10 +75,6 @@ class _NewList extends State<NewList> {
           TextButton(
             onPressed: () {
               Navigator.pop(context);
-              setState(() {
-                opcionController.clear();
-                desOpcionController.clear();
-              });
             },
             child: Text(
               "Cancelar",
@@ -92,6 +88,17 @@ class _NewList extends State<NewList> {
           TextButton(
             onPressed: () {
               Navigator.pop(context);
+
+              if (opcionController.text.isNotEmpty) {
+                setState(() {
+                  items.add(
+                    Listas(
+                      title: opcionController.text,
+                      description: desOpcionController.text,
+                    ),
+                  );
+                });
+              }
             },
             child: Text(
               "Aceptar",
@@ -104,18 +111,10 @@ class _NewList extends State<NewList> {
       ),
     );
 
-    if (opcionController.text.isNotEmpty) {
-      setState(() {
-        items.add(
-          Listas(
-            title: opcionController.text,
-            description: desOpcionController.text,
-          ),
-        );
-        opcionController.clear();
-        desOpcionController.clear();
-      });
-    }
+    setState(() {
+      opcionController.clear();
+      desOpcionController.clear();
+    });
   }
 
   void updateItems(int id) async {
@@ -249,9 +248,12 @@ class _NewList extends State<NewList> {
               onTap: addItem,
               hint: "Agregar Elemento",
               enabled: true,
+              background: Theme.of(context).colorScheme.primary,
+              colorText: Colors.white,
             ),
             Expanded(
               child: ListView.builder(
+                padding: const EdgeInsets.only(top: 16.0),
                 shrinkWrap: true,
                 itemCount: items.length,
                 itemBuilder: (context, index) {
@@ -269,6 +271,8 @@ class _NewList extends State<NewList> {
               enabled: titleController.text.isNotEmpty ? true : false,
               onTap: saveList,
               hint: "Hecho",
+              background: Theme.of(context).colorScheme.primary,
+              colorText: Theme.of(context).colorScheme.onPrimary,
             ),
             const SizedBox(
               height: 10,

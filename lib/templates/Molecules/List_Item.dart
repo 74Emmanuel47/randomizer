@@ -7,7 +7,7 @@ class ListItem extends StatelessWidget {
     super.key,
     required this.id,
     required this.title,
-    this.subtitle,
+    required this.subtitle,
     required this.onPressed,
     required this.onPressedDelete,
   });
@@ -25,11 +25,11 @@ class ListItem extends StatelessWidget {
       child: ElevatedButton(
         onPressed: onPressed,
         child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
             Expanded(
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
@@ -38,7 +38,7 @@ class ListItem extends StatelessWidget {
                     style: Theme.of(context).textTheme.headlineMedium,
                   ),
                   Text(
-                    subtitle!,
+                    subtitle ?? "",
                     style: Theme.of(context).textTheme.headlineSmall,
                     overflow: TextOverflow.ellipsis,
                   ),

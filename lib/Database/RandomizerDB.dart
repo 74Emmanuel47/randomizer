@@ -15,7 +15,7 @@ class RandomizerDB {
         await db.execute(
             "CREATE TABLE listas (id INTEGER PRIMARY KEY AUTOINCREMENT, title TEXT, description TEXT NULL)");
         await db.execute(
-            "CREATE TABLE items (id INTEGER PRIMARY KEY, listID INTEGER, title TEXT, description TEXT NULL, FOREIGN KEY (listID) REFERENCES listas(id) ON DELETE CASCADE ON UPDATE CASCADE );");
+            "CREATE TABLE items (id INTEGER PRIMARY KEY, listID INTEGER, title TEXT, description TEXT NULL, FOREIGN KEY (listID) REFERENCES listas(id) ON DELETE CASCADE ON UPDATE CASCADE )");
       },
       onConfigure: (db) async {
         return await db.execute('PRAGMA foreign_keys = ON');
@@ -52,6 +52,7 @@ class RandomizerDB {
       (index) => Listas(
         id: listasMap[index]['id'],
         title: listasMap[index]['title'],
+        description: listasMap[index]['description'],
       ),
     );
 

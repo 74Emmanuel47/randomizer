@@ -8,11 +8,15 @@ class ButtonDashed extends StatelessWidget {
     required this.onTap,
     required this.hint,
     required this.enabled,
+    required this.background,
+    required this.colorText,
   });
 
   final Function()? onTap;
   final String hint;
   final bool enabled;
+  final Color background;
+  final Color colorText;
 
   @override
   Widget build(BuildContext context) {
@@ -24,8 +28,16 @@ class ButtonDashed extends StatelessWidget {
       child: SizedBox(
         width: MediaQuery.of(context).size.width,
         child: ElevatedButton(
+          style: ElevatedButton.styleFrom(
+            backgroundColor: background,
+          ),
           onPressed: enabled ? onTap : null,
-          child: Text(hint),
+          child: Text(
+            hint,
+            style: TextStyle(
+              color: colorText,
+            ),
+          ),
         ),
       ),
     );
