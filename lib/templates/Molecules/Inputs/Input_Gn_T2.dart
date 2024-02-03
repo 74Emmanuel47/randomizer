@@ -48,7 +48,9 @@ class _InputGnT2 extends State<InputGnT2> {
                 hintText: widget.hint,
               ),
               style: GoogleFonts.electrolize(
-                color: focusTFF ? const Color(0xff0E77B1) : Colors.black,
+                color: focusTFF
+                    ? Theme.of(context).colorScheme.onSecondary
+                    : Theme.of(context).colorScheme.onBackground,
               ),
             ),
           ],

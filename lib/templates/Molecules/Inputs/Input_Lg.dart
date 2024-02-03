@@ -36,7 +36,9 @@ class _InputLg extends State<InputLg> {
           ),
           maxLines: 2,
           style: GoogleFonts.electrolize(
-            color: focusTFF ? const Color(0xff0E77B1) : Colors.black,
+            color: focusTFF
+                ? Theme.of(context).colorScheme.onSecondary
+                : Theme.of(context).colorScheme.onBackground,
           ),
         ),
       ),

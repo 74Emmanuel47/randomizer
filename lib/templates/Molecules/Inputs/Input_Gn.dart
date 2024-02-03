@@ -38,11 +38,15 @@ class _InputGn extends State<InputGn> {
             icon: Icon(
               Icons.title,
               size: 25,
-              color: focusTFF ? const Color(0xff0E77B1) : Colors.black,
+              color: focusTFF
+                  ? Theme.of(context).colorScheme.primary
+                  : Theme.of(context).colorScheme.onBackground,
             ),
           ),
           style: GoogleFonts.electrolize(
-            color: focusTFF ? const Color(0xff0E77B1) : Colors.black,
+            color: focusTFF
+                ? Theme.of(context).colorScheme.onSecondary
+                : Theme.of(context).colorScheme.onBackground,
           ),
         ),
       ),

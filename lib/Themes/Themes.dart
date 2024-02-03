@@ -20,7 +20,7 @@ ThemeData lightTheme = ThemeData(
 
     //It modifies body background color
     background: Colors.white,
-    onBackground: Color(0xff0E77B1),
+    onBackground: Colors.black,
 
     //It modifies appbar's background color
     surface: Color(0xffD9D9D9),
