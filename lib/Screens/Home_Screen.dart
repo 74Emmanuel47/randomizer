@@ -38,13 +38,14 @@ class _HomeScreenState extends State<HomeScreen> {
     setListas();
   }
 
-  void changeScreen(int id) {
-    Navigator.push(
+  void changeScreen(int id) async {
+    await Navigator.push(
       context,
       MaterialPageRoute(
         builder: (context) => ListScreen(listId: id),
       ),
     );
+    setListas();
   }
 
   @override

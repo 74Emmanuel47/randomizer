@@ -10,7 +10,7 @@ class Divisor extends StatelessWidget {
     return Container(
       margin: const EdgeInsets.symmetric(
         horizontal: 16,
-        vertical: 24.0,
+        vertical: 16.0,
       ),
       child: Divider(
         color: Theme.of(context).colorScheme.onSecondary,
