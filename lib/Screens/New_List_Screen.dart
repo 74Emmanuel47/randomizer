@@ -209,7 +209,7 @@ class _NewList extends State<NewList> {
 
       if (items.isNotEmpty) {
         for (var item in items) {
-          int itemID = await RandomizerDB.insertItem(
+          await RandomizerDB.insertItem(
             Items(
               id: id,
               listID: id,
@@ -217,12 +217,9 @@ class _NewList extends State<NewList> {
               description: item.description,
             ),
           );
-          print(itemID);
         }
       }
-    } catch (e) {
-      print(e);
-    }
+    } catch (e) {}
 
     Navigator.pop(context);
   }

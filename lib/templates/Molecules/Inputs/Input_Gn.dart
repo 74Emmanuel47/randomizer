@@ -5,7 +5,7 @@ import 'package:google_fonts/google_fonts.dart';
 
 // ignore: must_be_immutable
 class InputGn extends StatefulWidget {
-  InputGn({
+  const InputGn({
     super.key,
     required this.hint,
     required this.controller,

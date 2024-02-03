@@ -33,9 +33,47 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   void deleteList(int id) async {
-    await RandomizerDB.deleteLista(id);
+    int index = lists.indexWhere((element) => element.id == id);
 
-    setListas();
+    await showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: Text(
+          "Alerta",
+          textAlign: TextAlign.center,
+          style: TextStyle(
+            color: Theme.of(context).colorScheme.error,
+            fontSize: Theme.of(context).textTheme.headlineLarge!.fontSize,
+            fontFamily: Theme.of(context).textTheme.headlineLarge!.fontFamily,
+          ),
+        ),
+        content: Text("Está a punto de borrar la lista ${lists[index].title}. "
+            "¿Está seguro de eliminar la lista permanentemente?"),
+        actions: [
+          //Cancelar
+          TextButton(
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            child: const Text("Cancelar"),
+          ),
+          //Cancelar
+          TextButton(
+            onPressed: () async {
+              Navigator.pop(context);
+              await RandomizerDB.deleteLista(id);
+              setListas();
+            },
+            child: Text(
+              "Borrar",
+              style: TextStyle(
+                color: Theme.of(context).colorScheme.error,
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
   }
 
   void changeScreen(int id) async {
