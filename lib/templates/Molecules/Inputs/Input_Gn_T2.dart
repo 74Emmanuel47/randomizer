@@ -40,7 +40,12 @@ class _InputGnT2 extends State<InputGnT2> {
           children: [
             Text(
               widget.title,
-              style: Theme.of(context).textTheme.titleMedium,
+              style: TextStyle(
+                fontFamily: Theme.of(context).textTheme.titleMedium!.fontFamily,
+                color: focusTFF
+                    ? Theme.of(context).colorScheme.onSecondary
+                    : Theme.of(context).colorScheme.onBackground,
+              ),
             ),
             TextFormField(
               controller: widget.value,

@@ -39,7 +39,12 @@ class RandomizerDB {
   static Future<int> updateLista(Listas lista) async {
     Database database = await _openDB();
 
-    return database.update("listas", lista.toMap());
+    return database.update(
+      "listas",
+      lista.toMap(),
+      where: "id = ?",
+      whereArgs: [lista.id],
+    );
   }
 
   static Future<List<Listas>> readListas() async {
@@ -102,7 +107,12 @@ class RandomizerDB {
   static Future<int> updateItem(Items item) async {
     Database database = await _openDB();
 
-    return database.update("items", item.toMap());
+    return database.update(
+      "items",
+      item.toMap(),
+      where: "id = ?",
+      whereArgs: [item.id],
+    );
   }
 
   static Future<int> deleteItem(int id) async {

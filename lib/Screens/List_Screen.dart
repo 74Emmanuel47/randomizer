@@ -12,6 +12,7 @@ import 'package:randomizer/templates/Molecules/Button.dart';
 import 'package:randomizer/templates/Molecules/Divisor.dart';
 import 'package:randomizer/templates/Molecules/Inputs/Input_Gn_T2.dart';
 import 'package:randomizer/templates/Molecules/List_Item.dart';
+import 'package:randomizer/templates/Molecules/List_Item_T2.dart';
 
 class ListScreen extends StatefulWidget {
   const ListScreen({super.key, required this.listId});
@@ -25,8 +26,8 @@ class ListScreen extends StatefulWidget {
 class _ListScreenState extends State<ListScreen> {
   final opcionController = TextEditingController();
   final desOpcionController = TextEditingController();
-  late Listas list;
-  late List<Items> items;
+  Listas? list;
+  List<Items>? items;
 
   @override
   void initState() {
@@ -51,7 +52,7 @@ class _ListScreenState extends State<ListScreen> {
   }
 
   void onPressedDelete(int id) async {
-    int index = items.indexWhere((element) => element.id == id);
+    int index = items!.indexWhere((element) => element.id == id);
 
     await showDialog(
       context: context,
@@ -66,7 +67,7 @@ class _ListScreenState extends State<ListScreen> {
           ),
         ),
         content: Text(
-            "Está a punto de borrar la opción ${items[index].title} de la lista ${list.title}. "
+            "Está a punto de borrar la opción ${items![index].title} de la lista ${list!.title}. "
             "¿Está seguro de eliminar la opción permanentemente?"),
         actions: [
           //Cancelar
@@ -165,16 +166,17 @@ class _ListScreenState extends State<ListScreen> {
 
   void updateItems(int id, int index) async {
     setState(() {
-      opcionController.text = items[index].title;
-      desOpcionController.text = items[index].description!;
+      opcionController.text = items![index].title;
+      desOpcionController.text = items![index].description!;
     });
 
     await showDialog(
       context: context,
       builder: (context) => AlertDialog(
-        title: const Text(
+        title: Text(
           "Editar Opción",
           textAlign: TextAlign.center,
+          style: Theme.of(context).textTheme.headlineLarge,
         ),
         content: Wrap(
           children: [
@@ -221,8 +223,8 @@ class _ListScreenState extends State<ListScreen> {
 
     if (opcionController.text.isNotEmpty) {
       Items auxItem = Items(
-        id: items[index].id,
-        listID: items[index].listID,
+        id: items![index].id,
+        listID: items![index].listID,
         title: opcionController.text,
         description: desOpcionController.text,
       );
@@ -238,16 +240,17 @@ class _ListScreenState extends State<ListScreen> {
 
   void updateList() async {
     setState(() {
-      opcionController.text = list.title;
-      desOpcionController.text = list.description!;
+      opcionController.text = list!.title;
+      desOpcionController.text = list!.description!;
     });
 
     await showDialog(
       context: context,
       builder: (context) => AlertDialog(
-        title: const Text(
-          "Editar Opción",
+        title: Text(
+          "Editar Título",
           textAlign: TextAlign.center,
+          style: Theme.of(context).textTheme.headlineLarge,
         ),
         content: Wrap(
           children: [
@@ -281,7 +284,7 @@ class _ListScreenState extends State<ListScreen> {
             onPressed: () async {
               if (opcionController.text.isNotEmpty) {
                 Listas auxList = Listas(
-                  id: list.id,
+                  id: widget.listId,
                   title: opcionController.text,
                   description: desOpcionController.text,
                 );
@@ -313,7 +316,7 @@ class _ListScreenState extends State<ListScreen> {
       Timer(const Duration(seconds: 5), () {});
       return chooseOption();
     } else {
-      return Random().nextInt(items.length);
+      return Random().nextInt(items!.length);
     }
   }
 
@@ -330,7 +333,10 @@ class _ListScreenState extends State<ListScreen> {
         content: Wrap(
           children: [
             Text(
-                "El sistema de Randomizer ha determinado que usted debería elegir la opción ${items[option].title}. ¿Está de acuerdo con la decisión de Randomizer?"),
+              "El sistema de Randomizer ha determinado que usted debería "
+              "elegir la opción ${items![option].title}.",
+            ),
+            const Text("¿Está de acuerdo con la decisión de Randomizer?"),
           ],
         ),
         actions: [
@@ -361,7 +367,7 @@ class _ListScreenState extends State<ListScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(list.title),
+        title: Text(list!.title),
         actions: [
           IconButton(
             onPressed: updateList,
@@ -374,9 +380,9 @@ class _ListScreenState extends State<ListScreen> {
           Padding(
             padding: const EdgeInsets.only(top: 24.0),
             child: Text(
-              list.description!.isEmpty
+              list!.description!.isEmpty
                   ? "Que la suerte este siempre de tu lado..."
-                  : list.description!,
+                  : list!.description!,
               style: TextStyle(
                 fontSize: Theme.of(context).textTheme.headlineLarge!.fontSize,
                 fontFamily:
@@ -397,15 +403,24 @@ class _ListScreenState extends State<ListScreen> {
           Expanded(
             child: ListView.builder(
               shrinkWrap: true,
-              itemCount: items.length,
+              itemCount: items!.length,
               itemBuilder: (context, index) {
-                return ListItem(
-                  id: items[index].id!,
-                  title: items[index].title,
-                  subtitle: items[index].description,
-                  onPressed: () => updateItems(items[index].listID, index),
-                  onPressedDelete: onPressedDelete,
-                );
+                if (items![index].description!.isEmpty) {
+                  return ListItemT2(
+                    id: items![index].id!,
+                    title: items![index].title,
+                    onPressed: () => updateItems(items![index].listID, index),
+                    onPressedDelete: onPressedDelete,
+                  );
+                } else {
+                  return ListItem(
+                    id: items![index].id!,
+                    title: items![index].title,
+                    subtitle: items![index].description,
+                    onPressed: () => updateItems(items![index].listID, index),
+                    onPressedDelete: onPressedDelete,
+                  );
+                }
               },
             ),
           ),
@@ -415,7 +430,7 @@ class _ListScreenState extends State<ListScreen> {
           ButtonDashed(
             onTap: showDecision,
             hint: "Random!",
-            enabled: items.isNotEmpty,
+            enabled: items!.isNotEmpty,
             background: Theme.of(context).colorScheme.primary,
             colorText: Colors.white,
           ),

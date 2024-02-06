@@ -7,6 +7,7 @@ import 'package:randomizer/Screens/List_Screen.dart';
 import 'package:randomizer/Screens/New_List_Screen.dart';
 import 'package:randomizer/Templates/Molecules/Empty_List.dart';
 import 'package:randomizer/Templates/Molecules/List_Item.dart';
+import 'package:randomizer/templates/Molecules/List_Item_T2.dart';
 
 // ignore: must_be_immutable
 class HomeScreen extends StatefulWidget {
@@ -17,7 +18,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  late List<Listas> lists;
+  List<Listas>? lists;
 
   @override
   void initState() {
@@ -33,7 +34,7 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   void deleteList(int id) async {
-    int index = lists.indexWhere((element) => element.id == id);
+    int index = lists!.indexWhere((element) => element.id == id);
 
     await showDialog(
       context: context,
@@ -47,7 +48,7 @@ class _HomeScreenState extends State<HomeScreen> {
             fontFamily: Theme.of(context).textTheme.headlineLarge!.fontFamily,
           ),
         ),
-        content: Text("Está a punto de borrar la lista ${lists[index].title}. "
+        content: Text("Está a punto de borrar la lista ${lists![index].title}. "
             "¿Está seguro de eliminar la lista permanentemente?"),
         actions: [
           //Cancelar
@@ -100,21 +101,31 @@ class _HomeScreenState extends State<HomeScreen> {
           style: Theme.of(context).textTheme.displayMedium,
         ),
       ),
-      body: lists.isEmpty
+      body: lists!.isEmpty
           ? const EmptyList()
           : ListView.builder(
               physics: const BouncingScrollPhysics(
                 decelerationRate: ScrollDecelerationRate.normal,
               ),
-              itemCount: lists.length,
+              padding: const EdgeInsets.only(top: 8.0),
+              itemCount: lists!.length,
               itemBuilder: (context, index) {
-                return ListItem(
-                  id: lists[index].id!,
-                  title: lists[index].title,
-                  subtitle: lists[index].description,
-                  onPressed: () => changeScreen(lists[index].id!),
-                  onPressedDelete: deleteList,
-                );
+                if (lists![index].description!.isEmpty) {
+                  return ListItemT2(
+                    id: lists![index].id!,
+                    title: lists![index].title,
+                    onPressed: () => changeScreen(lists![index].id!),
+                    onPressedDelete: deleteList,
+                  );
+                } else {
+                  return ListItem(
+                    id: lists![index].id!,
+                    title: lists![index].title,
+                    subtitle: lists![index].description,
+                    onPressed: () => changeScreen(lists![index].id!),
+                    onPressedDelete: deleteList,
+                  );
+                }
               },
             ),
       floatingActionButton: FloatingActionButton(

@@ -11,6 +11,7 @@ import 'package:randomizer/templates/Molecules/Button.dart';
 import 'package:randomizer/templates/Molecules/Inputs/Input_Gn.dart';
 import 'package:randomizer/templates/Molecules/Inputs/Input_Gn_T2.dart';
 import 'package:randomizer/templates/Molecules/Inputs/Input_Lg.dart';
+import 'package:randomizer/templates/Molecules/List_Item_T2.dart';
 
 class NewList extends StatefulWidget {
   const NewList({super.key});
@@ -299,6 +300,14 @@ class _NewList extends State<NewList> {
                 shrinkWrap: true,
                 itemCount: items.length,
                 itemBuilder: (context, index) {
+                  if (items[index].description!.isEmpty) {
+                    return ListItemT2(
+                      id: index,
+                      title: items[index].title,
+                      onPressed: () => updateItems(index),
+                      onPressedDelete: deleteItem,
+                    );
+                  }
                   return ListItem(
                     id: index,
                     title: items[index].title,

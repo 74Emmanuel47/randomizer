@@ -12,7 +12,7 @@ ThemeData lightTheme = ThemeData(
     primary: Color(0xff0E77B1),
     onPrimary: Colors.white,
 
-    secondary: Color.fromARGB(255, 157, 208, 235),
+    secondary: Color(0xffd2e4ee),
     onSecondary: Color(0xff0E77B1),
 
     error: Color(0xffFF8484),
@@ -33,7 +33,7 @@ ThemeData lightTheme = ThemeData(
   appBarTheme: AppBarTheme(
     backgroundColor: const Color(0xff0E77B1),
     titleTextStyle: GoogleFonts.electrolize(
-      fontSize: 30,
+      fontSize: 32,
       color: const Color(0xffffffff),
     ),
     actionsIconTheme: const IconThemeData(
@@ -285,6 +285,7 @@ ThemeData darkTheme = ThemeData(
     //Message Box Title
     headlineLarge: GoogleFonts.electrolize(
       fontSize: 24,
+      color: Colors.white,
     ),
 
     //Text in a Message Box, Title in a Card
@@ -297,6 +298,12 @@ ThemeData darkTheme = ThemeData(
     headlineSmall: GoogleFonts.electrolize(
       fontSize: 14,
       color: Colors.white,
+    ),
+
+    //Title in a message box
+    titleMedium: GoogleFonts.electrolize(
+      color: Colors.white,
+      fontSize: 16.0,
     ),
 
     //Tag in an input

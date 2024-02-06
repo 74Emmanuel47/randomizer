@@ -2,19 +2,17 @@
 
 import 'package:flutter/material.dart';
 
-class ListItem extends StatelessWidget {
-  const ListItem({
+class ListItemT2 extends StatelessWidget {
+  const ListItemT2({
     super.key,
     required this.id,
     required this.title,
-    required this.subtitle,
     required this.onPressed,
     required this.onPressedDelete,
   });
 
   final int id;
   final String title;
-  final String? subtitle;
   final Function()? onPressed;
   final Function(int id) onPressedDelete;
 
@@ -34,33 +32,21 @@ class ListItem extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
             Expanded(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.only(
-                      top: 8.0,
-                      bottom: 4.0,
-                    ),
-                    child: Text(
-                      title,
-                      overflow: TextOverflow.ellipsis,
-                      style: Theme.of(context).textTheme.headlineMedium,
-                    ),
+              child: Padding(
+                padding: const EdgeInsets.only(
+                  top: 8.0,
+                  bottom: 4.0,
+                ),
+                child: Text(
+                  title,
+                  overflow: TextOverflow.ellipsis,
+                  style: TextStyle(
+                    fontFamily:
+                        Theme.of(context).textTheme.headlineMedium!.fontFamily,
+                    fontSize: 22,
+                    color: Theme.of(context).textTheme.headlineMedium!.color,
                   ),
-                  Padding(
-                    padding: const EdgeInsets.only(
-                      top: 4.0,
-                      bottom: 8.0,
-                    ),
-                    child: Text(
-                      subtitle!,
-                      style: Theme.of(context).textTheme.headlineSmall,
-                      overflow: TextOverflow.ellipsis,
-                    ),
-                  ),
-                ],
+                ),
               ),
             ),
             IconButton(
