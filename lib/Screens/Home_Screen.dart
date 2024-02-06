@@ -18,7 +18,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  List<Listas>? lists;
+  List<Listas> lists = [];
 
   @override
   void initState() {
@@ -77,11 +77,14 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  void changeScreen(int id) async {
+  void changeScreen(int id, String title) async {
     await Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (context) => ListScreen(listId: id),
+        builder: (context) => ListScreen(
+          listId: id,
+          title: title,
+        ),
       ),
     );
     setListas();
@@ -108,21 +111,25 @@ class _HomeScreenState extends State<HomeScreen> {
                 decelerationRate: ScrollDecelerationRate.normal,
               ),
               padding: const EdgeInsets.only(top: 8.0),
-              itemCount: lists!.length,
+              itemCount: lists.length,
               itemBuilder: (context, index) {
-                if (lists![index].description!.isEmpty) {
+                if (lists[index].description!.isEmpty) {
                   return ListItemT2(
-                    id: lists![index].id!,
-                    title: lists![index].title,
-                    onPressed: () => changeScreen(lists![index].id!),
+                    id: lists[index].id!,
+                    title: lists[index].title,
+                    onPressed: () =>
+                        changeScreen(lists[index].id!, lists[index].title),
                     onPressedDelete: deleteList,
                   );
                 } else {
                   return ListItem(
-                    id: lists![index].id!,
-                    title: lists![index].title,
-                    subtitle: lists![index].description,
-                    onPressed: () => changeScreen(lists![index].id!),
+                    id: lists[index].id!,
+                    title: lists[index].title,
+                    subtitle: lists[index].description,
+                    onPressed: () => changeScreen(
+                      lists[index].id!,
+                      lists[index].title,
+                    ),
                     onPressedDelete: deleteList,
                   );
                 }

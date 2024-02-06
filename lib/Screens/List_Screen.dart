@@ -15,9 +15,10 @@ import 'package:randomizer/templates/Molecules/List_Item.dart';
 import 'package:randomizer/templates/Molecules/List_Item_T2.dart';
 
 class ListScreen extends StatefulWidget {
-  const ListScreen({super.key, required this.listId});
+  const ListScreen({super.key, required this.listId, required this.title});
 
   final int listId;
+  final String title;
 
   @override
   State<ListScreen> createState() => _ListScreenState();
@@ -26,8 +27,8 @@ class ListScreen extends StatefulWidget {
 class _ListScreenState extends State<ListScreen> {
   final opcionController = TextEditingController();
   final desOpcionController = TextEditingController();
-  Listas? list;
-  List<Items>? items;
+  late Listas list;
+  List<Items> items = [];
 
   @override
   void initState() {
@@ -367,7 +368,7 @@ class _ListScreenState extends State<ListScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(list!.title),
+        title: Text(widget.title),
         actions: [
           IconButton(
             onPressed: updateList,
@@ -380,9 +381,9 @@ class _ListScreenState extends State<ListScreen> {
           Padding(
             padding: const EdgeInsets.only(top: 24.0),
             child: Text(
-              list!.description!.isEmpty
+              list.description!.isEmpty
                   ? "Que la suerte este siempre de tu lado..."
-                  : list!.description!,
+                  : list.description!,
               style: TextStyle(
                 fontSize: Theme.of(context).textTheme.headlineLarge!.fontSize,
                 fontFamily:
@@ -403,21 +404,21 @@ class _ListScreenState extends State<ListScreen> {
           Expanded(
             child: ListView.builder(
               shrinkWrap: true,
-              itemCount: items!.length,
+              itemCount: items.length,
               itemBuilder: (context, index) {
-                if (items![index].description!.isEmpty) {
+                if (items[index].description!.isEmpty) {
                   return ListItemT2(
-                    id: items![index].id!,
-                    title: items![index].title,
-                    onPressed: () => updateItems(items![index].listID, index),
+                    id: items[index].id!,
+                    title: items[index].title,
+                    onPressed: () => updateItems(items[index].listID, index),
                     onPressedDelete: onPressedDelete,
                   );
                 } else {
                   return ListItem(
-                    id: items![index].id!,
-                    title: items![index].title,
-                    subtitle: items![index].description,
-                    onPressed: () => updateItems(items![index].listID, index),
+                    id: items[index].id!,
+                    title: items[index].title,
+                    subtitle: items[index].description,
+                    onPressed: () => updateItems(items[index].listID, index),
                     onPressedDelete: onPressedDelete,
                   );
                 }
