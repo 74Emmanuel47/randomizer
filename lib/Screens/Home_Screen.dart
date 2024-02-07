@@ -34,7 +34,7 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   void deleteList(int id) async {
-    int index = lists!.indexWhere((element) => element.id == id);
+    int index = lists.indexWhere((element) => element.id == id);
 
     await showDialog(
       context: context,
@@ -48,7 +48,7 @@ class _HomeScreenState extends State<HomeScreen> {
             fontFamily: Theme.of(context).textTheme.headlineLarge!.fontFamily,
           ),
         ),
-        content: Text("Está a punto de borrar la lista ${lists![index].title}. "
+        content: Text("Está a punto de borrar la lista ${lists[index].title}. "
             "¿Está seguro de eliminar la lista permanentemente?"),
         actions: [
           //Cancelar
@@ -104,7 +104,7 @@ class _HomeScreenState extends State<HomeScreen> {
           style: Theme.of(context).textTheme.displayMedium,
         ),
       ),
-      body: lists!.isEmpty
+      body: lists.isEmpty
           ? const EmptyList()
           : ListView.builder(
               physics: const BouncingScrollPhysics(

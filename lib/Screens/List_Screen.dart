@@ -53,7 +53,7 @@ class _ListScreenState extends State<ListScreen> {
   }
 
   void onPressedDelete(int id) async {
-    int index = items!.indexWhere((element) => element.id == id);
+    int index = items.indexWhere((element) => element.id == id);
 
     await showDialog(
       context: context,
@@ -68,7 +68,7 @@ class _ListScreenState extends State<ListScreen> {
           ),
         ),
         content: Text(
-            "Está a punto de borrar la opción ${items![index].title} de la lista ${list!.title}. "
+            "Está a punto de borrar la opción ${items[index].title} de la lista ${list.title}. "
             "¿Está seguro de eliminar la opción permanentemente?"),
         actions: [
           //Cancelar
@@ -117,6 +117,13 @@ class _ListScreenState extends State<ListScreen> {
               title: "Descripción",
               hint: "",
               value: desOpcionController,
+            ),
+            Text(
+              "Nota: no es necesario agregar una descripción.",
+              style: GoogleFonts.electrolize(
+                fontSize: 10,
+                color: Theme.of(context).colorScheme.onBackground,
+              ),
             ),
           ],
         ),
@@ -167,8 +174,8 @@ class _ListScreenState extends State<ListScreen> {
 
   void updateItems(int id, int index) async {
     setState(() {
-      opcionController.text = items![index].title;
-      desOpcionController.text = items![index].description!;
+      opcionController.text = items[index].title;
+      desOpcionController.text = items[index].description!;
     });
 
     await showDialog(
@@ -190,6 +197,13 @@ class _ListScreenState extends State<ListScreen> {
               title: "Descripción",
               hint: "",
               value: desOpcionController,
+            ),
+            Text(
+              "Nota: no es necesario agregar una descripción.",
+              style: GoogleFonts.electrolize(
+                fontSize: 10,
+                color: Theme.of(context).colorScheme.onBackground,
+              ),
             ),
           ],
         ),
@@ -224,8 +238,8 @@ class _ListScreenState extends State<ListScreen> {
 
     if (opcionController.text.isNotEmpty) {
       Items auxItem = Items(
-        id: items![index].id,
-        listID: items![index].listID,
+        id: items[index].id,
+        listID: items[index].listID,
         title: opcionController.text,
         description: desOpcionController.text,
       );
@@ -241,8 +255,8 @@ class _ListScreenState extends State<ListScreen> {
 
   void updateList() async {
     setState(() {
-      opcionController.text = list!.title;
-      desOpcionController.text = list!.description!;
+      opcionController.text = list.title;
+      desOpcionController.text = list.description!;
     });
 
     await showDialog(
@@ -264,6 +278,13 @@ class _ListScreenState extends State<ListScreen> {
               title: "Descripción",
               hint: "",
               value: desOpcionController,
+            ),
+            Text(
+              "Nota: no es necesario agregar una descripción.",
+              style: GoogleFonts.electrolize(
+                fontSize: 10,
+                color: Theme.of(context).colorScheme.onBackground,
+              ),
             ),
           ],
         ),
@@ -317,7 +338,7 @@ class _ListScreenState extends State<ListScreen> {
       Timer(const Duration(seconds: 5), () {});
       return chooseOption();
     } else {
-      return Random().nextInt(items!.length);
+      return Random().nextInt(items.length);
     }
   }
 
@@ -335,7 +356,7 @@ class _ListScreenState extends State<ListScreen> {
           children: [
             Text(
               "El sistema de Randomizer ha determinado que usted debería "
-              "elegir la opción ${items![option].title}.",
+              "elegir la opción ${items[option].title}.",
             ),
             const Text("¿Está de acuerdo con la decisión de Randomizer?"),
           ],
@@ -431,7 +452,7 @@ class _ListScreenState extends State<ListScreen> {
           ButtonDashed(
             onTap: showDecision,
             hint: "Random!",
-            enabled: items!.isNotEmpty,
+            enabled: items.isNotEmpty,
             background: Theme.of(context).colorScheme.primary,
             colorText: Colors.white,
           ),

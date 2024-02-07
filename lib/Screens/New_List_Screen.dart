@@ -74,6 +74,13 @@ class _NewList extends State<NewList> {
               hint: "",
               value: desOpcionController,
             ),
+            Text(
+              "Nota: no es necesario agregar una descripción.",
+              style: GoogleFonts.electrolize(
+                fontSize: 10,
+                color: Theme.of(context).colorScheme.onBackground,
+              ),
+            ),
           ],
         ),
         actions: [
@@ -146,6 +153,13 @@ class _NewList extends State<NewList> {
               title: "Descripción",
               hint: "",
               value: desOpcionController,
+            ),
+            Text(
+              "Nota: no es necesario agregar una descripción.",
+              style: GoogleFonts.electrolize(
+                fontSize: 10,
+                color: Theme.of(context).colorScheme.onBackground,
+              ),
             ),
           ],
         ),
@@ -285,6 +299,20 @@ class _NewList extends State<NewList> {
             InputLg(
               hint: "Agrega una breve descripción...",
               controller: descriptionController,
+            ),
+            Container(
+              padding: const EdgeInsets.symmetric(
+                horizontal: 16.0,
+                vertical: 4.0,
+              ),
+              alignment: Alignment.centerLeft,
+              child: Text(
+                "Nota: no es necesario agregar una descripción.",
+                style: GoogleFonts.electrolize(
+                  fontSize: 10,
+                  color: Theme.of(context).colorScheme.onBackground,
+                ),
+              ),
             ),
             const Divisor(),
             ButtonDashed(
