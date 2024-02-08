@@ -1,4 +1,8 @@
+// ignore_for_file: prefer_const_literals_to_create_immutables
+
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:randomizer/Themes/Themes.dart';
 import 'package:randomizer/Themes/theme_Manager.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -6,6 +10,10 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'Screens/Splash_Screen.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+  ]);
   runApp(const MyApp());
 }
 
@@ -52,6 +60,15 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      localizationsDelegates: [
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ],
+      supportedLocales: [
+        const Locale("en"),
+        const Locale("es"),
+      ],
       title: 'Randomizer',
       theme: lightTheme,
       darkTheme: darkTheme,

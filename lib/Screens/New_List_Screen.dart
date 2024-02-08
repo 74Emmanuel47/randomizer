@@ -283,9 +283,17 @@ class _NewList extends State<NewList> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
-          "Nueva Lista",
-          style: Theme.of(context).textTheme.displayMedium,
+        title: Localizations.override(
+          context: context,
+          locale: const Locale("en"),
+          child: Builder(
+            builder: (context) {
+              return Text(
+                "Nueva Lista",
+                style: Theme.of(context).textTheme.displayMedium,
+              );
+            },
+          ),
         ),
       ),
       body: Form(
