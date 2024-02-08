@@ -13,6 +13,7 @@ import 'package:randomizer/templates/Molecules/Divisor.dart';
 import 'package:randomizer/templates/Molecules/Inputs/Input_Gn_T2.dart';
 import 'package:randomizer/templates/Molecules/List_Item.dart';
 import 'package:randomizer/templates/Molecules/List_Item_T2.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class ListScreen extends StatefulWidget {
   const ListScreen({super.key, required this.listId, required this.title});
@@ -59,7 +60,7 @@ class _ListScreenState extends State<ListScreen> {
       context: context,
       builder: (context) => AlertDialog(
         title: Text(
-          "Alerta",
+          AppLocalizations.of(context)!.alert,
           textAlign: TextAlign.center,
           style: TextStyle(
             color: Theme.of(context).colorScheme.error,
@@ -68,15 +69,16 @@ class _ListScreenState extends State<ListScreen> {
           ),
         ),
         content: Text(
-            "Está a punto de borrar la opción ${items[index].title} de la lista ${list.title}. "
-            "¿Está seguro de eliminar la opción permanentemente?"),
+          AppLocalizations.of(context)!
+              .deleteOptionMessage(items[index].title, list.title),
+        ),
         actions: [
           //Cancelar
           TextButton(
             onPressed: () {
               Navigator.pop(context);
             },
-            child: const Text("Cancelar"),
+            child: Text(AppLocalizations.of(context)!.cancel),
           ),
           //Cancelar
           TextButton(
@@ -86,7 +88,7 @@ class _ListScreenState extends State<ListScreen> {
               getInfoItems();
             },
             child: Text(
-              "Borrar",
+              AppLocalizations.of(context)!.delete,
               style: TextStyle(
                 color: Theme.of(context).colorScheme.error,
               ),
@@ -102,24 +104,24 @@ class _ListScreenState extends State<ListScreen> {
       context: context,
       builder: (context) => AlertDialog(
         title: Text(
-          "Nueva Opción",
+          AppLocalizations.of(context)!.newOption,
           style: Theme.of(context).textTheme.headlineLarge,
           textAlign: TextAlign.center,
         ),
         content: Wrap(
           children: [
             InputGnT2(
-              title: "Opción",
+              title: AppLocalizations.of(context)!.option,
               hint: "",
               value: opcionController,
             ),
             InputGnT2(
-              title: "Descripción",
+              title: AppLocalizations.of(context)!.description,
               hint: "",
               value: desOpcionController,
             ),
             Text(
-              "Nota: no es necesario agregar una descripción.",
+              AppLocalizations.of(context)!.note,
               style: GoogleFonts.electrolize(
                 fontSize: 10,
                 color: Theme.of(context).colorScheme.onBackground,
@@ -133,7 +135,7 @@ class _ListScreenState extends State<ListScreen> {
               Navigator.pop(context);
             },
             child: Text(
-              "Cancelar",
+              AppLocalizations.of(context)!.cancel,
               style: GoogleFonts.electrolize(
                 color: Colors.red,
               ),
@@ -156,7 +158,7 @@ class _ListScreenState extends State<ListScreen> {
               }
             },
             child: Text(
-              "Aceptar",
+              AppLocalizations.of(context)!.accept,
               style: GoogleFonts.electrolize(
                 color: Colors.blue,
               ),
@@ -182,24 +184,24 @@ class _ListScreenState extends State<ListScreen> {
       context: context,
       builder: (context) => AlertDialog(
         title: Text(
-          "Editar Opción",
+          AppLocalizations.of(context)!.editOption,
           textAlign: TextAlign.center,
           style: Theme.of(context).textTheme.headlineLarge,
         ),
         content: Wrap(
           children: [
             InputGnT2(
-              title: "Opción",
+              title: AppLocalizations.of(context)!.option,
               hint: "",
               value: opcionController,
             ),
             InputGnT2(
-              title: "Descripción",
+              title: AppLocalizations.of(context)!.description,
               hint: "",
               value: desOpcionController,
             ),
             Text(
-              "Nota: no es necesario agregar una descripción.",
+              AppLocalizations.of(context)!.note,
               style: GoogleFonts.electrolize(
                 fontSize: 10,
                 color: Theme.of(context).colorScheme.onBackground,
@@ -213,7 +215,7 @@ class _ListScreenState extends State<ListScreen> {
               Navigator.pop(context);
             },
             child: Text(
-              "Cancelar",
+              AppLocalizations.of(context)!.cancel,
               style: GoogleFonts.electrolize(
                 color: Colors.red,
               ),
@@ -226,7 +228,7 @@ class _ListScreenState extends State<ListScreen> {
               Navigator.pop(context);
             },
             child: Text(
-              "Aceptar",
+              AppLocalizations.of(context)!.accept,
               style: GoogleFonts.electrolize(
                 color: Colors.blue,
               ),
@@ -263,24 +265,24 @@ class _ListScreenState extends State<ListScreen> {
       context: context,
       builder: (context) => AlertDialog(
         title: Text(
-          "Editar Título",
+          AppLocalizations.of(context)!.editList,
           textAlign: TextAlign.center,
           style: Theme.of(context).textTheme.headlineLarge,
         ),
         content: Wrap(
           children: [
             InputGnT2(
-              title: "Opción",
+              title: AppLocalizations.of(context)!.option,
               hint: "",
               value: opcionController,
             ),
             InputGnT2(
-              title: "Descripción",
+              title: AppLocalizations.of(context)!.description,
               hint: "",
               value: desOpcionController,
             ),
             Text(
-              "Nota: no es necesario agregar una descripción.",
+              AppLocalizations.of(context)!.note,
               style: GoogleFonts.electrolize(
                 fontSize: 10,
                 color: Theme.of(context).colorScheme.onBackground,
@@ -294,7 +296,7 @@ class _ListScreenState extends State<ListScreen> {
               Navigator.pop(context);
             },
             child: Text(
-              "Cancelar",
+              AppLocalizations.of(context)!.cancel,
               style: GoogleFonts.electrolize(
                 color: Colors.red,
               ),
@@ -316,7 +318,7 @@ class _ListScreenState extends State<ListScreen> {
               Navigator.pop(context);
             },
             child: Text(
-              "Aceptar",
+              AppLocalizations.of(context)!.accept,
               style: GoogleFonts.electrolize(
                 color: Colors.blue,
               ),
@@ -349,16 +351,16 @@ class _ListScreenState extends State<ListScreen> {
       context: context,
       builder: (context) => AlertDialog(
         title: Text(
-          "Decisión",
+          AppLocalizations.of(context)!.decision,
           style: Theme.of(context).textTheme.headlineLarge,
         ),
         content: Wrap(
           children: [
             Text(
-              "El sistema de Randomizer ha determinado que usted debería "
-              "elegir la opción ${items[option].title}.",
+              AppLocalizations.of(context)!
+                  .decisionMessage(items[option].title),
             ),
-            const Text("¿Está de acuerdo con la decisión de Randomizer?"),
+            Text(AppLocalizations.of(context)!.decisionMessage2),
           ],
         ),
         actions: [
@@ -367,13 +369,13 @@ class _ListScreenState extends State<ListScreen> {
               Navigator.pop(context);
               showDecision();
             },
-            child: const Text("Repetir"),
+            child: Text(AppLocalizations.of(context)!.repeat),
           ),
           TextButton(
             onPressed: () {
               Navigator.pop(context);
             },
-            child: const Text("Aceptar"),
+            child: Text(AppLocalizations.of(context)!.accept),
           ),
         ],
       ),
@@ -403,7 +405,7 @@ class _ListScreenState extends State<ListScreen> {
             padding: const EdgeInsets.only(top: 24.0),
             child: Text(
               list.description!.isEmpty
-                  ? "Que la suerte este siempre de tu lado..."
+                  ? AppLocalizations.of(context)!.noDescription
                   : list.description!,
               style: TextStyle(
                 fontSize: Theme.of(context).textTheme.headlineLarge!.fontSize,
@@ -416,7 +418,7 @@ class _ListScreenState extends State<ListScreen> {
           const Divisor(),
           ButtonDashed(
             onTap: addItem,
-            hint: "Agregar Elemento",
+            hint: AppLocalizations.of(context)!.hintAddButton,
             enabled: true,
             background: Theme.of(context).colorScheme.primary,
             colorText: Colors.white,
@@ -451,7 +453,7 @@ class _ListScreenState extends State<ListScreen> {
           ),
           ButtonDashed(
             onTap: showDecision,
-            hint: "Random!",
+            hint: AppLocalizations.of(context)!.random,
             enabled: items.isNotEmpty,
             background: Theme.of(context).colorScheme.primary,
             colorText: Colors.white,
@@ -464,3 +466,10 @@ class _ListScreenState extends State<ListScreen> {
     );
   }
 }
+
+/**
+ * 
+ * "Está a punto de borrar la opción ${} de la lista ${}. "
+            "¿Está seguro de eliminar la opción permanentemente?"
+ * 
+ */

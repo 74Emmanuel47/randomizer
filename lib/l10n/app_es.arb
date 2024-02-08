@@ -1,0 +1,81 @@
+{
+    
+    "alert" : "Alerta",
+
+    "deleteListMessage" : "Está a punto de borrar la lista {element}. ¿Está seguro de eliminar la lista permanentemente?",
+    "@deleteListMessage" : {
+        "description" : "Mensaje de alerta al borrar una lista.",
+        "placeholders" : {
+            "element" : {
+                "type" : "String",
+                "example" : "Lista 1"
+            }
+        }
+    },
+
+    "deleteOptionMessage" : "Está a punto de borrar el elmento {option} de la lista {list}. ¿Está seguro de eliminar la opción permanentemente?",
+    "@deleteOptionMessage" : {
+        "description" : "Mensaje de alerta al borrar un elemento en una lista.",
+        "placeholders" : {
+            "option" : {
+                "type" : "String",
+                "example" : "Opcion 1"
+            },
+            "list" : {
+                "type" : "String",
+                "example" : "Lista 1"
+            }
+        }
+    },
+
+    "cancel" : "Cancelar",
+    "accept" : "Aceptar",
+    "delete" : "Borrar",
+
+    "newOption" : "Nueva Opción",
+    "option" : "Opción",
+    "description" : "Descripción",
+    "note" : "Nota: no es necesario agregar una descripción.",
+
+    "editOption" : "Editar Opción",
+
+    "deleteOptionMessageNoList" : "Está a punto de borrar el elmento {option}. ¿Está seguro de eliminar la opción?",
+    "@deleteOptionMessageNoList" : {
+        "description" : "Mensaje de alerta al borrar un elemento en una lista.",
+        "placeholders" : {
+            "option" : {
+                "type" : "String",
+                "example" : "Opcion 1"
+            }
+        }
+    },
+
+    "newListScreen" : "Nueva Lista",
+    "title" : "Título",
+    "hintDescription" : "Agrega una breve descripción...",
+    "hintAddButton" : "Agregar Elemento",
+    "hintSaveButton" : "Hecho",
+
+    "editList" : "Editar Lista",
+
+    "decision" : "Desición",
+    "decisionMessage" : "El sistema de Randomizer ha determinado que usted debería elegir la opción {option}.",
+    "@decisionMessage" : {
+        "description" : "Mensaje que se muestra al determinar la opción.",
+        "placeholders" : {
+            "option" : {
+                "type" : "String",
+                "example" : "Opción 1"
+            }
+        }
+    },
+
+    "decisionMessage2" : "¿Está de acuerdo con la decisión de Randomizer?",
+
+    "repeat" : "Repetir",
+    
+    "noDescription" : " ... ",
+    "random" : "Random!"
+
+
+}

@@ -2,11 +2,8 @@
 
 import 'package:another_flutter_splash_screen/another_flutter_splash_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:randomizer/Themes/theme_Manager.dart';
 
 import 'Home_Screen.dart';
-
-ThemeManager _themeManager = ThemeManager();
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key, required this.theme});
@@ -18,7 +15,7 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreen extends State<SplashScreen> {
-  final String _image = _themeManager.themeMode == ThemeMode.dark
+  final String _image = ThemeMode.system == ThemeMode.dark
       ? "images/DM_Randomizer_Logo.png"
       : "images/Randomizer_Logo.png";
 
@@ -46,7 +43,7 @@ class _SplashScreen extends State<SplashScreen> {
                 ),
               ),
               Text(
-                "V.0.1.",
+                "V.1.5",
                 style: Theme.of(context).textTheme.displaySmall,
               ),
             ],

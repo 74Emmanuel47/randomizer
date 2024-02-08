@@ -12,6 +12,7 @@ import 'package:randomizer/templates/Molecules/Inputs/Input_Gn.dart';
 import 'package:randomizer/templates/Molecules/Inputs/Input_Gn_T2.dart';
 import 'package:randomizer/templates/Molecules/Inputs/Input_Lg.dart';
 import 'package:randomizer/templates/Molecules/List_Item_T2.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class NewList extends StatefulWidget {
   const NewList({super.key});
@@ -58,24 +59,24 @@ class _NewList extends State<NewList> {
       context: context,
       builder: (context) => AlertDialog(
         title: Text(
-          "Nueva Opción",
+          AppLocalizations.of(context)!.newOption,
           style: Theme.of(context).textTheme.headlineLarge,
           textAlign: TextAlign.center,
         ),
         content: Wrap(
           children: [
             InputGnT2(
-              title: "Opción",
+              title: AppLocalizations.of(context)!.option,
               hint: "",
               value: opcionController,
             ),
             InputGnT2(
-              title: "Descripción",
+              title: AppLocalizations.of(context)!.description,
               hint: "",
               value: desOpcionController,
             ),
             Text(
-              "Nota: no es necesario agregar una descripción.",
+              AppLocalizations.of(context)!.note,
               style: GoogleFonts.electrolize(
                 fontSize: 10,
                 color: Theme.of(context).colorScheme.onBackground,
@@ -89,7 +90,7 @@ class _NewList extends State<NewList> {
               Navigator.pop(context);
             },
             child: Text(
-              "Cancelar",
+              AppLocalizations.of(context)!.cancel,
               style: GoogleFonts.electrolize(
                 color: Colors.red,
               ),
@@ -113,7 +114,7 @@ class _NewList extends State<NewList> {
               }
             },
             child: Text(
-              "Aceptar",
+              AppLocalizations.of(context)!.accept,
               style: GoogleFonts.electrolize(
                 color: Colors.blue,
               ),
@@ -138,24 +139,24 @@ class _NewList extends State<NewList> {
     await showDialog(
       context: context,
       builder: (context) => AlertDialog(
-        title: const Text(
-          "Editar Opción",
+        title: Text(
+          AppLocalizations.of(context)!.editOption,
           textAlign: TextAlign.center,
         ),
         content: Wrap(
           children: [
             InputGnT2(
-              title: "Opción",
+              title: AppLocalizations.of(context)!.option,
               hint: "",
               value: opcionController,
             ),
             InputGnT2(
-              title: "Descripción",
+              title: AppLocalizations.of(context)!.description,
               hint: "",
               value: desOpcionController,
             ),
             Text(
-              "Nota: no es necesario agregar una descripción.",
+              AppLocalizations.of(context)!.note,
               style: GoogleFonts.electrolize(
                 fontSize: 10,
                 color: Theme.of(context).colorScheme.onBackground,
@@ -169,7 +170,7 @@ class _NewList extends State<NewList> {
               Navigator.pop(context);
             },
             child: Text(
-              "Cancelar",
+              AppLocalizations.of(context)!.cancel,
               style: GoogleFonts.electrolize(
                 color: Colors.red,
               ),
@@ -182,7 +183,7 @@ class _NewList extends State<NewList> {
               Navigator.pop(context);
             },
             child: Text(
-              "Aceptar",
+              AppLocalizations.of(context)!.accept,
               style: GoogleFonts.electrolize(
                 color: Colors.blue,
               ),
@@ -212,7 +213,7 @@ class _NewList extends State<NewList> {
       context: context,
       builder: (context) => AlertDialog(
         title: Text(
-          "Alerta",
+          AppLocalizations.of(context)!.alert,
           textAlign: TextAlign.center,
           style: TextStyle(
             color: Theme.of(context).colorScheme.error,
@@ -221,15 +222,16 @@ class _NewList extends State<NewList> {
           ),
         ),
         content: Text(
-            "Está a punto de borrar la opción ${items[id].title} de la lista. "
-            "¿Está seguro de eliminar la opción?"),
+          AppLocalizations.of(context)!
+              .deleteOptionMessageNoList(items[id].title),
+        ),
         actions: [
           //Cancelar
           TextButton(
             onPressed: () async {
               Navigator.pop(context);
             },
-            child: const Text("Cancelar"),
+            child: Text(AppLocalizations.of(context)!.cancel),
           ),
           //Cancelar
           TextButton(
@@ -240,7 +242,7 @@ class _NewList extends State<NewList> {
               });
             },
             child: Text(
-              "Borrar",
+              AppLocalizations.of(context)!.delete,
               style: TextStyle(
                 color: Theme.of(context).colorScheme.error,
               ),
@@ -283,29 +285,21 @@ class _NewList extends State<NewList> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Localizations.override(
-          context: context,
-          locale: const Locale("en"),
-          child: Builder(
-            builder: (context) {
-              return Text(
-                "Nueva Lista",
-                style: Theme.of(context).textTheme.displayMedium,
-              );
-            },
-          ),
+        title: Text(
+          AppLocalizations.of(context)!.newListScreen,
+          style: Theme.of(context).textTheme.displayMedium,
         ),
       ),
       body: Form(
         child: Column(
           children: [
             InputGn(
-              hint: "Título",
+              hint: AppLocalizations.of(context)!.title,
               controller: titleController,
             ),
             const Divisor(),
             InputLg(
-              hint: "Agrega una breve descripción...",
+              hint: AppLocalizations.of(context)!.hintDescription,
               controller: descriptionController,
             ),
             Container(
@@ -315,7 +309,7 @@ class _NewList extends State<NewList> {
               ),
               alignment: Alignment.centerLeft,
               child: Text(
-                "Nota: no es necesario agregar una descripción.",
+                AppLocalizations.of(context)!.note,
                 style: GoogleFonts.electrolize(
                   fontSize: 10,
                   color: Theme.of(context).colorScheme.onBackground,
@@ -325,7 +319,7 @@ class _NewList extends State<NewList> {
             const Divisor(),
             ButtonDashed(
               onTap: addItem,
-              hint: "Agregar Elemento",
+              hint: AppLocalizations.of(context)!.hintAddButton,
               enabled: true,
               background: Theme.of(context).colorScheme.primary,
               colorText: Colors.white,
@@ -357,7 +351,7 @@ class _NewList extends State<NewList> {
             ButtonDashed(
               enabled: titleController.text.isNotEmpty ? true : false,
               onTap: saveList,
-              hint: "Hecho",
+              hint: AppLocalizations.of(context)!.hintSaveButton,
               background: Theme.of(context).colorScheme.primary,
               colorText: Theme.of(context).colorScheme.onPrimary,
             ),
@@ -370,3 +364,11 @@ class _NewList extends State<NewList> {
     );
   }
 }
+
+
+/**Messages
+ * 
+ *  "Está a punto de borrar la opción ${items[id].title} de la lista. "
+            "¿Está seguro de eliminar la opción?"
+ * 
+ */

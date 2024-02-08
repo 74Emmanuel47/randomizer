@@ -8,6 +8,7 @@ import 'package:randomizer/Screens/New_List_Screen.dart';
 import 'package:randomizer/Templates/Molecules/Empty_List.dart';
 import 'package:randomizer/Templates/Molecules/List_Item.dart';
 import 'package:randomizer/templates/Molecules/List_Item_T2.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 // ignore: must_be_immutable
 class HomeScreen extends StatefulWidget {
@@ -40,7 +41,7 @@ class _HomeScreenState extends State<HomeScreen> {
       context: context,
       builder: (context) => AlertDialog(
         title: Text(
-          "Alerta",
+          AppLocalizations.of(context)!.alert,
           textAlign: TextAlign.center,
           style: TextStyle(
             color: Theme.of(context).colorScheme.error,
@@ -48,15 +49,18 @@ class _HomeScreenState extends State<HomeScreen> {
             fontFamily: Theme.of(context).textTheme.headlineLarge!.fontFamily,
           ),
         ),
-        content: Text("Está a punto de borrar la lista ${lists[index].title}. "
-            "¿Está seguro de eliminar la lista permanentemente?"),
+        content: Text(
+          AppLocalizations.of(context)!.deleteListMessage(lists[index].title),
+        ),
         actions: [
           //Cancelar
           TextButton(
             onPressed: () {
               Navigator.pop(context);
             },
-            child: const Text("Cancelar"),
+            child: Text(
+              AppLocalizations.of(context)!.cancel,
+            ),
           ),
           //Cancelar
           TextButton(
@@ -66,7 +70,7 @@ class _HomeScreenState extends State<HomeScreen> {
               setListas();
             },
             child: Text(
-              "Borrar",
+              AppLocalizations.of(context)!.delete,
               style: TextStyle(
                 color: Theme.of(context).colorScheme.error,
               ),
@@ -151,3 +155,9 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 }
+
+/**Messages
+ * 
+ * "Está a punto de borrar la lista ${lists[index].title}. "
+            "¿Está seguro de eliminar la lista permanentemente?"
+ */

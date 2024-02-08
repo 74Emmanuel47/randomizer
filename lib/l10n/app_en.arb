@@ -1,0 +1,79 @@
+{
+    
+    "alert" : "Alerta",
+
+    "deleteListMessage" : "You are about to delete the {element} list. Are you sure that you want to delete it permanently?",
+    "@deleteListMessage" : {
+        "description" : "Alert message at deleting a list.",
+        "placeholders" : {
+            "element" : {
+                "type" : "String",
+                "example" : "List 1"
+            }
+        }
+    },
+
+    "deleteOptionMessage" : "You are about to delete the {option} from the {list} list. Are you sure that you want to delete it permanently?",
+    "@deleteOptionMessage" : {
+        "description" : "Alert message at deleting an option from a list",
+        "placeholders" : {
+            "option" : {
+                "type" : "String",
+                "example" : "Opcion 1"
+            },
+            "list" : {
+                "type" : "String",
+                "example" : "Lista 1"
+            }
+        }
+    },
+
+    "cancel" : "Cancel",
+    "accept" : "Accept",
+    "delete" : "Delete",
+
+    "newOption" : "New Option",
+    "option" : "Option",
+    "description" : "Description",
+    "note" : "Note: you don't need to write a description.",
+
+    "editOption" : "Edit Option",
+
+    "deleteOptionMessageNoList" : "You are about to delete the {option}. Are you sure that you want to delete it?",
+    "@deleteOptionMessageNoList" : {
+        "description" : "Alert message at deleting an option from a list",
+        "placeholders" : {
+            "option" : {
+                "type" : "String",
+                "example" : "Opcion 1"
+            }
+        }
+    },
+
+    "newListScreen" : "New List",
+    "title" : "Title",
+    "hintDescription" : "Add a brief description...",
+    "hintAddButton" : "New Element",
+    "hintSaveButton" : "Done",
+
+    "editList" : "Edit List",
+
+    "decision" : "Result",
+    "decisionMessage" : "Randomizer system has determined that you should take the {option} option",
+    "@decisionMessage" : {
+        "description" : "Message that shows the resulting option.",
+        "placeholders" : {
+            "option" : {
+                "type" : "String",
+                "example" : "Opción 1"
+            }
+        }
+    },
+
+    "decisionMessage2" : "Do you agree with the resulting option?",
+
+    "repeat" : "Repeat",
+
+    "noDescription" : " ... ",
+    "random" : "Random!"
+}
