@@ -155,9 +155,3 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 }
-
-/**Messages
- * 
- * "Está a punto de borrar la lista ${lists[index].title}. "
-            "¿Está seguro de eliminar la lista permanentemente?"
- */

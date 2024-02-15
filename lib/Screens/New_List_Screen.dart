@@ -274,9 +274,7 @@ class _NewList extends State<NewList> {
           );
         }
       }
-    } catch (e) {
-      print(e);
-    }
+    } catch (e) {}
 
     Navigator.pop(context);
   }
@@ -364,11 +362,3 @@ class _NewList extends State<NewList> {
     );
   }
 }
-
-
-/**Messages
- * 
- *  "Está a punto de borrar la opción ${items[id].title} de la lista. "
-            "¿Está seguro de eliminar la opción?"
- * 
- */

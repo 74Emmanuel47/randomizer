@@ -353,6 +353,7 @@ class _ListScreenState extends State<ListScreen> {
         title: Text(
           AppLocalizations.of(context)!.decision,
           style: Theme.of(context).textTheme.headlineLarge,
+          textAlign: TextAlign.center,
         ),
         content: Wrap(
           children: [
@@ -466,10 +467,3 @@ class _ListScreenState extends State<ListScreen> {
     );
   }
 }
-
-/**
- * 
- * "Está a punto de borrar la opción ${} de la lista ${}. "
-            "¿Está seguro de eliminar la opción permanentemente?"
- * 
- */

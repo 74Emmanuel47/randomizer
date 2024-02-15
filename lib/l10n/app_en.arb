@@ -1,8 +1,8 @@
 {
     
-    "alert" : "Alerta",
+    "alert" : "Warning",
 
-    "deleteListMessage" : "You are about to delete the {element} list. Are you sure that you want to delete it permanently?",
+    "deleteListMessage" : "You are about to delete {element}-list. Are you sure that you want to delete it permanently?",
     "@deleteListMessage" : {
         "description" : "Alert message at deleting a list.",
         "placeholders" : {
@@ -13,7 +13,7 @@
         }
     },
 
-    "deleteOptionMessage" : "You are about to delete the {option} from the {list} list. Are you sure that you want to delete it permanently?",
+    "deleteOptionMessage" : "You are about to delete {option}-option from {list}-list. Are you sure that you want to delete it permanently?",
     "@deleteOptionMessage" : {
         "description" : "Alert message at deleting an option from a list",
         "placeholders" : {
@@ -39,7 +39,7 @@
 
     "editOption" : "Edit Option",
 
-    "deleteOptionMessageNoList" : "You are about to delete the {option}. Are you sure that you want to delete it?",
+    "deleteOptionMessageNoList" : "You are about to delete {option}-option. Are you sure that you want to delete it?",
     "@deleteOptionMessageNoList" : {
         "description" : "Alert message at deleting an option from a list",
         "placeholders" : {
@@ -59,7 +59,7 @@
     "editList" : "Edit List",
 
     "decision" : "Result",
-    "decisionMessage" : "Randomizer system has determined that you should take the {option} option",
+    "decisionMessage" : "Randomizer system has determined that you should take {option}-option",
     "@decisionMessage" : {
         "description" : "Message that shows the resulting option.",
         "placeholders" : {
