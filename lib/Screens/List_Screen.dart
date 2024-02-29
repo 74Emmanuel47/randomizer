@@ -352,7 +352,12 @@ class _ListScreenState extends State<ListScreen> {
       builder: (context) => AlertDialog(
         title: Text(
           AppLocalizations.of(context)!.decision,
-          style: Theme.of(context).textTheme.headlineLarge,
+          style: TextStyle(
+            color: Theme.of(context).textTheme.headlineLarge!.color,
+            fontSize: Theme.of(context).textTheme.headlineLarge!.fontSize,
+            fontFamily: Theme.of(context).textTheme.headlineLarge!.fontFamily,
+            fontWeight: Theme.of(context).textTheme.headlineLarge!.fontWeight,
+          ),
           textAlign: TextAlign.center,
         ),
         content: Wrap(
